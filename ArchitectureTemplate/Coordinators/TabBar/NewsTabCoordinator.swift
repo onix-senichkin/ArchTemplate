@@ -25,6 +25,7 @@ class NewsTabCoordinator: TabBarItemCoordinatorType {
     }
     
     func start() {
+        rootController.setNavigationBarHidden(true, animated: false)
         rootController.tabBarItem = tabBarItem
 
         let coordinator = NewsListCoordinator(navigationController: rootController, transitions: self, serviceHolder: serviceHolder)
