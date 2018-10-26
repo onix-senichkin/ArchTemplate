@@ -30,9 +30,11 @@ class AppCoordinator {
         
         let userService = UserService()
         let readingListService = ReadingListService()
+        let featureListService = FeatureListService()
         
         serviceHolder.add(UserServiceType.self, for: userService)
         serviceHolder.add(ReadingListService.self, for: readingListService)
+        serviceHolder.add(FeatureListService.self, for: featureListService)
     }
     
     private func startPreloginFlow() {

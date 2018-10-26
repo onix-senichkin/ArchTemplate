@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--News ListVC-->
+        <!--News ListVC2-->
         <scene sceneID="3Dh-by-S06">
             <objects>
-                <viewController storyboardIdentifier="NewsListVC" id="qtX-CL-XKL" customClass="NewsListVC" customModule="Template" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsListVC2" id="qtX-CL-XKL" customClass="NewsListVC2" customModule="Template" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jzK-Fo-eJ0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,6 +44,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5YZ-zw-CYl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-750" y="161"/>
+        </scene>
+        <!--News ListVC-->
+        <scene sceneID="rxY-47-kv6">
+            <objects>
+                <viewController storyboardIdentifier="NewsListVC" id="7k9-sS-N88" customClass="NewsListVC" customModule="Template" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RRc-1P-wbm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sZm-Ja-8Ks">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="7k9-sS-N88" id="JSf-ds-pMt"/>
+                                    <outlet property="delegate" destination="7k9-sS-N88" id="yqh-P5-7Sd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="USy-Y7-VKE" firstAttribute="trailing" secondItem="sZm-Ja-8Ks" secondAttribute="trailing" id="1le-ta-F4v"/>
+                            <constraint firstItem="USy-Y7-VKE" firstAttribute="bottom" secondItem="sZm-Ja-8Ks" secondAttribute="bottom" id="Hhf-kv-mPR"/>
+                            <constraint firstItem="sZm-Ja-8Ks" firstAttribute="leading" secondItem="USy-Y7-VKE" secondAttribute="leading" id="UsU-4P-fFs"/>
+                            <constraint firstItem="sZm-Ja-8Ks" firstAttribute="top" secondItem="USy-Y7-VKE" secondAttribute="top" id="lcg-7l-Ekc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="USy-Y7-VKE"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="sZm-Ja-8Ks" id="EH4-9j-DJa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="js3-uY-ZXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1482" y="161"/>
         </scene>
     </scenes>
 </document>
