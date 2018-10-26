@@ -36,7 +36,8 @@ class NewCell: UITableViewCell {
         self.lbDesc.text = item.newDesc
         self.btnAction.setTitle(item.newInReadingListTitle, for: .normal)
         
-        self.setNeedsLayout()
+        self.btnAction.setNeedsLayout()
+        self.btnAction.layoutIfNeeded()
     }
 }
 

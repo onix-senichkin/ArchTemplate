@@ -34,8 +34,22 @@ class ReadingListTabCoordinator: TabBarItemCoordinatorType {
     deinit {
         print("ReadingListTabCoordinator deinit")
     }
+    
+    func updateBadge() {
+        let readingListService = self.serviceHolder.get(by: ReadingListService.self)
+        let count = readingListService.getItemsCount()
+        if count > 0 {
+            rootController.tabBarItem.badgeValue = String(count)
+        } else {
+            rootController.tabBarItem.badgeValue = nil
+        }
+    }
 }
 
 extension ReadingListTabCoordinator: ReadingListCoordinatorTransitions {
+    
+    func updateReadingListBadge() {
+        updateBadge()
+    }
     
 }

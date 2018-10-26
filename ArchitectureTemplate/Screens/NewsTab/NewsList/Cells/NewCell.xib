@@ -19,28 +19,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="408" height="139.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ji-KQ-6WZ">
-                        <rect key="frame" x="8" y="8" width="41.5" height="33"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="751" text="Title fdjvbhjdfbvjhdfbhjvbd  dfjhb" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ji-KQ-6WZ">
+                        <rect key="frame" x="8" y="8" width="289" height="53"/>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="Amc-oV-pxV"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Desc" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63J-yN-04h">
-                        <rect key="frame" x="8" y="57" width="392" height="20.5"/>
+                        <rect key="frame" x="8" y="77" width="392" height="20.5"/>
                         <color key="backgroundColor" red="1" green="0.4370012626" blue="0.57482319749999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="919-R0-6lM">
-                        <rect key="frame" x="261" y="8" width="139" height="33"/>
+                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="919-R0-6lM">
+                        <rect key="frame" x="330" y="8" width="70" height="30"/>
                         <color key="backgroundColor" red="1" green="0.8636588369" blue="0.43299961720000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="BbQ-Ub-jwU"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="hgd-hc-OD6"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <state key="normal" title="Add to reading list"/>
+                        <state key="normal" title="Remove"/>
                         <connections>
                             <action selector="btnActionClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="m7P-o1-TZx"/>
                         </connections>
@@ -64,7 +65,7 @@
                 <outlet property="lbDesc" destination="63J-yN-04h" id="pso-9W-vhu"/>
                 <outlet property="lbTitle" destination="7Ji-KQ-6WZ" id="2OD-Rs-zn1"/>
             </connections>
-            <point key="canvasLocation" x="200" y="170.91454272863569"/>
+            <point key="canvasLocation" x="-43" y="157"/>
         </tableViewCell>
     </objects>
 </document>

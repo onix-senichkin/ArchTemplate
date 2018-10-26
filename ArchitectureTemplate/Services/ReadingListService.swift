@@ -28,10 +28,8 @@ class ReadingListService: ReadingListServiceType {
     func action(for item: NewViewModel) {
         let existed = item.newInReadingList
         if existed {
-            item.newInReadingList = false
             removeItem(item)
         } else {
-            item.newInReadingList = true
             addItem(item)
         }
     }
@@ -50,6 +48,7 @@ class ReadingListService: ReadingListServiceType {
             return
         }
         
+        item.newInReadingList = true
         items.append(item)
     }
 
@@ -58,6 +57,7 @@ class ReadingListService: ReadingListServiceType {
         if filtered.count > 0 {
             for object in filtered {
                 if let index = items.index(of: object) {
+                    object.newInReadingList = false
                     items.remove(at: index)
                 }
             }

@@ -10,6 +10,7 @@ import UIKit
 
 protocol NewsTabCoordinatorTransitions: class {
     
+    func updateReadingListBadge()
 }
 
 class NewsTabCoordinator: TabBarItemCoordinatorType {
@@ -25,7 +26,6 @@ class NewsTabCoordinator: TabBarItemCoordinatorType {
     }
     
     func start() {
-        rootController.setNavigationBarHidden(true, animated: false)
         rootController.tabBarItem = tabBarItem
 
         let coordinator = NewsListCoordinator(navigationController: rootController, transitions: self, serviceHolder: serviceHolder)
@@ -38,6 +38,9 @@ class NewsTabCoordinator: TabBarItemCoordinatorType {
 }
 
 extension NewsTabCoordinator: NewsListCoordinatorTransitions {
-    
+ 
+    func updateReadingListBadge() {
+        transitions?.updateReadingListBadge()
+    }
 }
 

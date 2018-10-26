@@ -39,7 +39,7 @@ class NewViewModel: NSObject {
     }
     
     var newInReadingListTitle: String {
-        let title = newModel.inReadingList ? " Add " : " Remove "
+        let title = !newModel.inReadingList ? "Add" : "Remove"
         return title
     }
 }

@@ -25,8 +25,15 @@ class NewsListVC: UIViewController {
         getNewsItems()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
     private func setup() {
+        self.title = "News"
         viewModel.registerCells(for: tableView)
+        tableView.tableFooterView = UIView()
     }
     
     private func getNewsItems() {

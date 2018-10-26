@@ -24,14 +24,12 @@ protocol NewsListViewModelType {
 class NewsListViewModel: NewsListViewModelType {
     
     fileprivate let coordinator: NewsListCoordinatorType
-    private var serviceHolder: ServiceHolder
     private var readingListService: ReadingListService
     
     private var items: [NewViewModel] = []
     
     init(_ coordinator: NewsListCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
-        self.serviceHolder = serviceHolder
         self.readingListService = serviceHolder.get(by: ReadingListService.self)
     }
         
@@ -47,6 +45,16 @@ class NewsListViewModel: NewsListViewModelType {
         let request = GetNewsRequest()
         request.getNews(sBlock: { [weak self] items in
             self?.items = items
+            
+            //add to reading list service
+            for newModel in items {
+                if newModel.newInReadingList {
+                    self?.readingListService.addItem(newModel)
+                }
+            }
+            
+            self?.coordinator.updateReadingListBadge()
+            
             sBlock()
         }) { errorStr in
             eBlock(errorStr)
@@ -57,6 +65,7 @@ class NewsListViewModel: NewsListViewModelType {
         if index < items.count {
             let model = items[index]
             readingListService.action(for: model)
+            coordinator.updateReadingListBadge()
         }
     }
 }
