@@ -134,6 +134,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6B2654F9218358D700DDFEEF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C43A86D21822344002BE368 /* NewCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		6B709CAE2180BE6D00FBE4CC /* Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,13 +207,13 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		7C43A86D21822344002BE368 /* Cells */ = {
+		7C43A86D21822344002BE368 /* NewCell */ = {
 			isa = PBXGroup;
 			children = (
 				7C43A86E2182235C002BE368 /* NewCell.swift */,
 				7C43A86F2182235C002BE368 /* NewCell.xib */,
 			);
-			path = Cells;
+			path = NewCell;
 			sourceTree = "<group>";
 		};
 		7CBE76B821806D4400900833 = {
@@ -234,6 +242,7 @@
 				7CBE76D721806D6600900833 /* Coordinators */,
 				7CBE76D821806D7200900833 /* Services */,
 				7CBE76D921806D7800900833 /* Screens */,
+				6B2654F9218358D700DDFEEF /* Views */,
 				7CBE76DA21806D8200900833 /* Models */,
 				7CBE76DB21806D8900900833 /* ViewModels */,
 				7CBE76DC21806D9B00900833 /* Helpers */,
@@ -358,7 +367,6 @@
 		7CBE76EA2180741C00900833 /* NewsList */ = {
 			isa = PBXGroup;
 			children = (
-				7C43A86D21822344002BE368 /* Cells */,
 				7CBE76F32180757800900833 /* NewsListCoordinator.swift */,
 				7CBE76EC2180744200900833 /* NewsListViewModel.swift */,
 				7CBE76ED2180744200900833 /* NewsListVC.swift */,

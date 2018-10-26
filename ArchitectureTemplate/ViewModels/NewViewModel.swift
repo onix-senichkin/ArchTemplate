@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class NewViewModel: NSObject {
     
@@ -41,5 +42,11 @@ class NewViewModel: NSObject {
     var newInReadingListTitle: String {
         let title = !newModel.inReadingList ? "Add" : "Remove"
         return title
+    }
+    
+    var cellBkg: UIColor {
+        let inReadingListBkg = RGBColor(225, 225, 225)
+        let defaultBkg = UIColor.white
+        return newModel.inReadingList ? inReadingListBkg : defaultBkg
     }
 }
