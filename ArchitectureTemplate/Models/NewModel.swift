@@ -13,4 +13,5 @@ class NewModel: Decodable {
     var id: Int
     var title: String
     var desc: String
+    var inReadingList: Bool
 }

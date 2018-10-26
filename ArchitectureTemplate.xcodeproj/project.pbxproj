@@ -54,6 +54,7 @@
 		7CD6965D21807BFD00A6830D /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6965A21807BFD00A6830D /* SignInViewModel.swift */; };
 		7CD6965F2180AAFE00A6830D /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6965E2180AAFE00A6830D /* AlertHelper.swift */; };
 		7CD696612180ACB400A6830D /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD696602180ACB400A6830D /* Defines.swift */; };
+		7CD708A7218336120041A04F /* ReadingListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD708A6218336120041A04F /* ReadingListService.swift */; };
 		C53F50DBCF8C5CDEC66FA940 /* Pods_ArchitectureTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61BF9B3D2D8F27CF5E466DE /* Pods_ArchitectureTemplate.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,7 @@
 		7CD6965A21807BFD00A6830D /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		7CD6965E2180AAFE00A6830D /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		7CD696602180ACB400A6830D /* Defines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defines.swift; sourceTree = "<group>"; };
+		7CD708A6218336120041A04F /* ReadingListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListService.swift; sourceTree = "<group>"; };
 		AA091320BA8F8B160B54997D /* Pods-ArchitectureTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureTemplate.release.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureTemplate/Pods-ArchitectureTemplate.release.xcconfig"; sourceTree = "<group>"; };
 		C18EC314365965638A68851D /* Pods-ArchitectureTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArchitectureTemplate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ArchitectureTemplate/Pods-ArchitectureTemplate.debug.xcconfig"; sourceTree = "<group>"; };
 		D61BF9B3D2D8F27CF5E466DE /* Pods_ArchitectureTemplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArchitectureTemplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +273,7 @@
 			children = (
 				7CBE76E321806FFF00900833 /* ServiceHolder.swift */,
 				7CBE76F12180752B00900833 /* UserService.swift */,
+				7CD708A6218336120041A04F /* ReadingListService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				7CBE76F42180757800900833 /* NewsListCoordinator.swift in Sources */,
 				7C43A8702182235C002BE368 /* NewCell.swift in Sources */,
 				7CD6965C21807BFD00A6830D /* SignInCoordinator.swift in Sources */,
+				7CD708A7218336120041A04F /* ReadingListService.swift in Sources */,
 				6B709CE3218105A100FBE4CC /* ProfileVC.swift in Sources */,
 				6B709CCA2180EFAB00FBE4CC /* NewsTabCoordinator.swift in Sources */,
 				7CBE76E421806FFF00900833 /* ServiceHolder.swift in Sources */,

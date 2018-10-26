@@ -37,10 +37,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="919-R0-6lM">
-                        <rect key="frame" x="293" y="8" width="107" height="33"/>
+                        <rect key="frame" x="261" y="8" width="139" height="33"/>
                         <color key="backgroundColor" red="1" green="0.8636588369" blue="0.43299961720000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <state key="normal" title="To reading list"/>
+                        <state key="normal" title="Add to reading list"/>
                         <connections>
                             <action selector="btnActionClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="m7P-o1-TZx"/>
                         </connections>

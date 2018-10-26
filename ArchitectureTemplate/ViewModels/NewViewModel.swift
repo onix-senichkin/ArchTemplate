@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NewViewModel {
+class NewViewModel: NSObject {
     
     private let newModel: NewModel
     
@@ -27,5 +27,19 @@ class NewViewModel {
     
     var newDesc: String {
         return newModel.desc
+    }
+    
+    var newInReadingList: Bool {
+        get {
+            return newModel.inReadingList
+        }
+        set {
+            newModel.inReadingList = newValue
+        }
+    }
+    
+    var newInReadingListTitle: String {
+        let title = newModel.inReadingList ? " Add " : " Remove "
+        return title
     }
 }

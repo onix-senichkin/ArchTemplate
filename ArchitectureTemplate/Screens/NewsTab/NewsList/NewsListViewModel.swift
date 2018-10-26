@@ -18,20 +18,21 @@ protocol NewsListViewModelType {
 
     //actions
     func getNews(sBlock: @escaping EmptyClosureType, eBlock: @escaping SimpleClosure<String>)
+    func btnActionClicked(_ index: Int)
 }
 
 class NewsListViewModel: NewsListViewModelType {
     
     fileprivate let coordinator: NewsListCoordinatorType
     private var serviceHolder: ServiceHolder
-    private var userService: UserServiceType
+    private var readingListService: ReadingListService
     
     private var items: [NewViewModel] = []
     
     init(_ coordinator: NewsListCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
-        self.userService = serviceHolder.get(by: UserServiceType.self)
+        self.readingListService = serviceHolder.get(by: ReadingListService.self)
     }
         
     deinit {
@@ -52,6 +53,12 @@ class NewsListViewModel: NewsListViewModelType {
         }
     }
     
+    func btnActionClicked(_ index: Int) {
+        if index < items.count {
+            let model = items[index]
+            readingListService.action(for: model)
+        }
+    }
 }
 
 //MARK: Datasource
@@ -70,7 +77,7 @@ extension NewsListViewModel {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewCell.identifier, for: indexPath) as? NewCell
         if index < items.count {
             let model = items[index]
-            cell?.customInit(index: index, item: model)
+            cell?.customInit(index: index, item: model, delegate: delegate as? NewCellDelegate)
         }
         return cell ?? UITableViewCell()
     }

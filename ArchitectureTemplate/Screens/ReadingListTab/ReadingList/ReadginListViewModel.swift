@@ -16,12 +16,12 @@ class ReadingListViewModel: ReadingListViewModelType {
     
     fileprivate let coordinator: ReadingListCoordinatorType
     private var serviceHolder: ServiceHolder
-    private var userService: UserServiceType
+    private var readingListService: ReadingListService
     
     init(_ coordinator: ReadingListCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
-        self.userService = serviceHolder.get(by: UserServiceType.self)
+        self.readingListService = serviceHolder.get(by: ReadingListService.self)
     }
     
     

@@ -8,27 +8,44 @@
 
 import UIKit
 
+protocol NewCellDelegate: class {
+    
+    func btnActionClicked(_ index: Int)
+}
+
 class NewCell: UITableViewCell {
 
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var lbDesc: UILabel!
     @IBOutlet weak var btnAction: UIButton!
     
+    private weak var delegate: NewCellDelegate?
+    
+    private var index: Int = -1
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func customInit(index: Int, item: NewViewModel) {
+    func customInit(index: Int, item: NewViewModel, delegate: NewCellDelegate? = nil) {
+        self.index = index
+        self.delegate = delegate
+
         self.lbTitle.text = item.newTitle
         self.lbDesc.text = item.newDesc
+        self.btnAction.setTitle(item.newInReadingListTitle, for: .normal)
+        
+        self.setNeedsLayout()
     }
 }
 
 extension NewCell {
     
     @IBAction func btnActionClicked(_ sender: UIButton) {
-        
+        if index >= 0 {
+            delegate?.btnActionClicked(index)
+        }
     }
 
 }

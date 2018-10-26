@@ -12,7 +12,6 @@ class AppCoordinator {
     
     private let window: UIWindow
     private let serviceHolder = ServiceHolder()
-    private var userService: UserServiceType! //#TODO: Recheck this
 
     private var authCoordinator: AuthFlowCoordinator?
     private var tabBarCoordinator: TabBarCoordinator?
@@ -23,17 +22,22 @@ class AppCoordinator {
     }
     
     private func start() {
-        startServices()
         startPreloginFlow()
     }
     
     private func startServices() {
-        userService = UserService()
+        serviceHolder.removeAllService() //clean services before login, to remove old user data after logout
+        
+        let userService = UserService()
+        let readingListService = ReadingListService()
         
         serviceHolder.add(UserServiceType.self, for: userService)
+        serviceHolder.add(ReadingListService.self, for: readingListService)
     }
     
     private func startPreloginFlow() {
+        startServices() //clean services before login, to remove old user data after logout
+
         authCoordinator = AuthFlowCoordinator(window: window, transitions: self, serviceHolder: serviceHolder)
         authCoordinator?.start()
         

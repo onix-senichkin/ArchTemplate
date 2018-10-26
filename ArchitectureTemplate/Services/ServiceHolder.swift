@@ -38,5 +38,9 @@ public class ServiceHolder {
         
         return service
     }
+    
+    public func removeAllService() {
+        servicesDictionary = [:]
+    }
 }
 

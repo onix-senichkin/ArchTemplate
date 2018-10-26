@@ -18,6 +18,10 @@ class UserService: UserServiceType {
     
     private var userViewModel:UserViewModel? //#ToDiscuss view model or model? Maybe make empty on init
     
+    deinit {
+        print("UserService deinit")
+    }
+    
     //MARK: Actions
     func login(email: String, password: String, completion: @escaping SimpleClosure<String?>) {
         

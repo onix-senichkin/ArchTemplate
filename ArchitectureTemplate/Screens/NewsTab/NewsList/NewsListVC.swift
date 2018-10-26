@@ -38,6 +38,7 @@ class NewsListVC: UIViewController {
     }
 }
 
+//MARK:- UITableViewDataSource
 extension NewsListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,5 +48,27 @@ extension NewsListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = viewModel.cellForTableView(tableView: tableView, atIndexPath: indexPath, delegate: self)
         return cell
+    }
+}
+
+//MARK:- UITableViewDelegate
+extension NewsListVC: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+}
+
+//MARK:- NewCellDelegate
+extension NewsListVC: NewCellDelegate {
+    
+    func btnActionClicked(_ index: Int) {
+        viewModel.btnActionClicked(index)
+        //self.tableView.reloadData()
+        
+        let indexPath = IndexPath(row: index, section: 0)
+        self.tableView.beginUpdates()
+        self.tableView.reloadRows(at: [indexPath], with: .none)
+        self.tableView.endUpdates()
     }
 }
