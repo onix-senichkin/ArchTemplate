@@ -57,13 +57,15 @@ extension ReadingListVC {
 //MARK:- NewCellDelegate
 extension ReadingListVC: NewCellDelegate {
     
-    func btnActionClicked(_ index: Int) {
+    func btnActionClicked(_ objId: Int) {
 
-        if index < tableView.numberOfRows(inSection: 0) {
-            viewModel.removeFromReadingList(index)
-            let indexPath = IndexPath(row: index, section: 0)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.reloadData()
+        let rowIndex = viewModel.getRowIndex(from: objId)
+        if rowIndex < tableView.numberOfRows(inSection: 0) {
+            viewModel.removeFromReadingList(objId)
+            let indexPath = IndexPath(row: rowIndex, section: 0)
+            self.tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .right)
+            self.tableView.endUpdates()
         }
     }
 }

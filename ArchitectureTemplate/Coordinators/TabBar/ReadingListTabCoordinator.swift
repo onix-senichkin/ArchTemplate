@@ -29,13 +29,18 @@ class ReadingListTabCoordinator: TabBarItemCoordinatorType {
         
         let coordinator = ReadingListCoordinator(navigationController: rootController, transitions: self, serviceHolder: serviceHolder)
         coordinator.start()
+        
+        let readingListService = self.serviceHolder.get(by: ReadingListService.self)
+        readingListService.callBackBadgeCountChanged = { [weak self] in
+            self?.updateBadgeCount()
+        }
     }
     
     deinit {
         print("ReadingListTabCoordinator deinit")
     }
     
-    func updateBadge() {
+    func updateBadgeCount() {
         let readingListService = self.serviceHolder.get(by: ReadingListService.self)
         let count = readingListService.getItemsCount()
         if count > 0 {
@@ -47,9 +52,5 @@ class ReadingListTabCoordinator: TabBarItemCoordinatorType {
 }
 
 extension ReadingListTabCoordinator: ReadingListCoordinatorTransitions {
-    
-    func updateReadingListBadge() {
-        updateBadge()
-    }
     
 }

@@ -15,9 +15,10 @@ protocol ReadingListViewModelType {
     func registerCells(for tableView: UITableView)
     func getNumberOfRows() -> Int
     func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath, delegate: UIViewController) -> UITableViewCell
+    func getRowIndex(from id: Int) -> Int
     
     //actions
-    func removeFromReadingList(_ index: Int)
+    func removeFromReadingList(_ objId: Int)
 }
 
 class ReadingListViewModel: ReadingListViewModelType {
@@ -36,10 +37,9 @@ class ReadingListViewModel: ReadingListViewModelType {
     }
     
     //actions
-    func removeFromReadingList(_ index: Int) {
-        if let model = readingListService.getItem(index: index) {
+    func removeFromReadingList(_ objId: Int) {
+        if let model = readingListService.getItem(objId: objId) {
             readingListService.removeItem(model)
-            coordinator.updateReadingListBadge()
         }
     }
 }
@@ -55,12 +55,16 @@ extension ReadingListViewModel {
         return readingListService.getItemsCount()
     }
     
+    func getRowIndex(from id: Int) -> Int {
+        return readingListService.getObjectIndex(from: id)
+    }
+    
     func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath, delegate: UIViewController) -> UITableViewCell {
         let index = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: NewCell.identifier, for: indexPath) as? NewCell
         let count = readingListService.getItemsCount()
         if index < count, let model = readingListService.getItem(index: index) {
-            cell?.customInit(index: index, item: model, delegate: delegate as? NewCellDelegate)
+            cell?.customInit(item: model, delegate: delegate as? NewCellDelegate)
         }
         return cell ?? UITableViewCell()
     }

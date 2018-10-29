@@ -10,7 +10,7 @@ import UIKit
 
 protocol NewCellDelegate: class {
     
-    func btnActionClicked(_ index: Int)
+    func btnActionClicked(_ objId: Int)
 }
 
 class NewCell: UITableViewCell {
@@ -21,15 +21,15 @@ class NewCell: UITableViewCell {
     
     private weak var delegate: NewCellDelegate?
     
-    private var index: Int = -1
+    private var objId: Int = -1
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func customInit(index: Int, item: NewViewModel, delegate: NewCellDelegate? = nil) {
-        self.index = index
+    func customInit(item: NewViewModel, delegate: NewCellDelegate? = nil) {
+        self.objId = item.newId
         self.delegate = delegate
 
         self.lbTitle.text = item.newTitle
@@ -37,16 +37,16 @@ class NewCell: UITableViewCell {
         self.btnAction.setTitle(item.newInReadingListTitle, for: .normal)
         self.contentView.backgroundColor = item.cellBkg
         
-        self.btnAction.setNeedsLayout()
-        self.btnAction.layoutIfNeeded()
+        //self.btnAction.setNeedsLayout()
+        //self.btnAction.layoutIfNeeded()
     }
 }
 
 extension NewCell {
     
     @IBAction func btnActionClicked(_ sender: UIButton) {
-        if index >= 0 {
-            delegate?.btnActionClicked(index)
+        if objId >= 0 {
+            delegate?.btnActionClicked(objId)
         }
     }
 

@@ -18,16 +18,17 @@ enum NewsList2ViewModelState {
 protocol NewsList2ViewModelType {
     
     //callback
-    var callback: ((NewsList2ViewModelState) -> Void)? { get set }
+    var callback: ((NewsList2ViewModelState) -> ())? { get set }
     
     //datasource
     func registerCells(for tableView: UITableView)
     func getNumberOfRows() -> Int
     func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath, delegate: UIViewController) -> UITableViewCell
+    func getRowIndex(from objId: Int) -> Int
 
     //actions
     func getNews()
-    func btnActionClicked(_ index: Int)
+    func btnActionClicked(_ objId: Int)
 }
 
 class NewsList2ViewModel: NewsList2ViewModelType {
@@ -37,7 +38,7 @@ class NewsList2ViewModel: NewsList2ViewModelType {
     
     private var items: [NewViewModel] = []
     
-    var callback: ((NewsList2ViewModelState) -> Void)?
+    var callback: ((NewsList2ViewModelState) -> ())?
     var state: NewsList2ViewModelState = .none {
         didSet {
             callback?(state)
@@ -70,19 +71,16 @@ class NewsList2ViewModel: NewsList2ViewModelType {
                 }
             }
             
-            self?.coordinator.updateReadingListBadge()
-            
             self?.state = .itemsRecieved
         }) { [weak self] errorStr in
             self?.state = .error(message: errorStr)
         }
     }
     
-    func btnActionClicked(_ index: Int) {
-        if index < items.count {
-            let model = items[index]
-            readingListService.action(for: model)
-            coordinator.updateReadingListBadge()
+    func btnActionClicked(_ objId: Int) {
+        let filtered = items.filter( { $0.newId == objId } )
+        if let first = filtered.first {
+            readingListService.action(for: first)
         }
     }
 }
@@ -98,12 +96,21 @@ extension NewsList2ViewModel {
         return items.count
     }
     
+    func getRowIndex(from objId: Int) -> Int {
+        let filtered = items.filter( { $0.newId == objId } )
+        if let first = filtered.first, let index = items.index(of: first) {
+            return index
+        }
+        
+        return 0
+    }
+    
     func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath, delegate: UIViewController) -> UITableViewCell {
         let index = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: NewCell.identifier, for: indexPath) as? NewCell
         if index < items.count {
             let model = items[index]
-            cell?.customInit(index: index, item: model, delegate: delegate as? NewCellDelegate)
+            cell?.customInit(item: model, delegate: delegate as? NewCellDelegate)
         }
         return cell ?? UITableViewCell()
     }

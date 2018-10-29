@@ -10,13 +10,10 @@ import UIKit
 
 protocol ReadingListCoordinatorTransitions: class {
     
-    func updateReadingListBadge()
 }
 
 protocol ReadingListCoordinatorType {
     
-    //actions
-    func updateReadingListBadge()
 }
 
 class ReadingListCoordinator: ReadingListCoordinatorType {
@@ -42,10 +39,5 @@ class ReadingListCoordinator: ReadingListCoordinatorType {
     
     deinit {
         print("ReadingListCoordinator - deinit")
-    }
-    
-    //actions
-    func updateReadingListBadge() {
-        transitions?.updateReadingListBadge()
     }
 }

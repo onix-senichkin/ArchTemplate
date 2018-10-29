@@ -9,11 +9,9 @@
 import UIKit
 
 protocol NewsList2CoordinatorTransitions: class {
-    func updateReadingListBadge()
 }
 
 protocol NewsList2CoordinatorType {
-    func updateReadingListBadge()
 }
 
 class NewsList2Coordinator: NewsList2CoordinatorType {
@@ -39,10 +37,6 @@ class NewsList2Coordinator: NewsList2CoordinatorType {
     
     deinit {
         print("NewsList2Coordinator - deinit")
-    }
-    
-    func updateReadingListBadge() {
-        transitions?.updateReadingListBadge()
     }
     
 }

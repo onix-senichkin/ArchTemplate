@@ -69,13 +69,14 @@ extension NewsListVC: UITableViewDelegate {
 //MARK:- NewCellDelegate
 extension NewsListVC: NewCellDelegate {
     
-    func btnActionClicked(_ index: Int) {
-        viewModel.btnActionClicked(index)
-        //self.tableView.reloadData()
+    func btnActionClicked(_ objId: Int) {
+        viewModel.btnActionClicked(objId)
         
+        let index = viewModel.getRowIndex(from: objId)
         let indexPath = IndexPath(row: index, section: 0)
         self.tableView.beginUpdates()
         self.tableView.reloadRows(at: [indexPath], with: .none)
         self.tableView.endUpdates()
+
     }
 }

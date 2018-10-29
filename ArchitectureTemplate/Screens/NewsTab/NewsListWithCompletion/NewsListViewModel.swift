@@ -15,10 +15,11 @@ protocol NewsListViewModelType {
     func registerCells(for tableView: UITableView)
     func getNumberOfRows() -> Int
     func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath, delegate: UIViewController) -> UITableViewCell
+    func getRowIndex(from objId: Int) -> Int
 
     //actions
     func getNews(sBlock: @escaping EmptyClosureType, eBlock: @escaping SimpleClosure<String>)
-    func btnActionClicked(_ index: Int)
+    func btnActionClicked(_ objId: Int)
 }
 
 class NewsListViewModel: NewsListViewModelType {
@@ -53,19 +54,16 @@ class NewsListViewModel: NewsListViewModelType {
                 }
             }
             
-            self?.coordinator.updateReadingListBadge()
-            
             sBlock()
         }) { errorStr in
             eBlock(errorStr)
         }
     }
     
-    func btnActionClicked(_ index: Int) {
-        if index < items.count {
-            let model = items[index]
-            readingListService.action(for: model)
-            coordinator.updateReadingListBadge()
+    func btnActionClicked(_ objId: Int) {
+        let filtered = items.filter( { $0.newId == objId } )
+        if let first = filtered.first {
+            readingListService.action(for: first)
         }
     }
 }
@@ -80,15 +78,23 @@ extension NewsListViewModel {
     func getNumberOfRows() -> Int {
         return items.count
     }
-    
+
+    func getRowIndex(from objId: Int) -> Int {
+        let filtered = items.filter( { $0.newId == objId } )
+        if let first = filtered.first, let index = items.index(of: first) {
+            return index
+        }
+        
+        return 0
+    }
+
     func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath, delegate: UIViewController) -> UITableViewCell {
         let index = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: NewCell.identifier, for: indexPath) as? NewCell
         if index < items.count {
             let model = items[index]
-            cell?.customInit(index: index, item: model, delegate: delegate as? NewCellDelegate)
+            cell?.customInit(item: model, delegate: delegate as? NewCellDelegate)
         }
         return cell ?? UITableViewCell()
     }
-
 }

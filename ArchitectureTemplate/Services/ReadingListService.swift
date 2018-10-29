@@ -10,15 +10,35 @@ import Foundation
 
 protocol ReadingListServiceType: Service {
     
+    //getters
+    func getObjectIndex(from id: Int) -> Int
+    
     //actions
     func getItemsCount() -> Int
     func getItem(index: Int) -> NewViewModel?
+    func getItem(objId: Int) -> NewViewModel?
     func addItem(_ item: NewViewModel)
 }
 
 class ReadingListService: ReadingListServiceType {
     
-    private var items:[NewViewModel] = []
+    var callBackBadgeCountChanged: EmptyClosureType?
+    
+    private var items:[NewViewModel] = [] {
+        didSet {
+            callBackBadgeCountChanged?()
+        }
+    }
+    
+    //getters
+    func getObjectIndex(from id: Int) -> Int {
+        let filtered = items.filter( { $0.newId == id })
+        if let first = filtered.first, let index = items.index(of: first) {
+            return index
+        }
+        
+        return 0
+    }
     
     //actions
     func getItemsCount() -> Int {
@@ -33,13 +53,17 @@ class ReadingListService: ReadingListServiceType {
             addItem(item)
         }
     }
-    
+
     func getItem(index: Int) -> NewViewModel? {
         if index < items.count {
             return items[index]
         }
-        
         return nil
+    }
+
+    func getItem(objId: Int) -> NewViewModel? {
+        let filtered = items.filter( { $0.newId == objId } )
+        return filtered.first ?? nil
     }
     
     func addItem(_ item: NewViewModel) {

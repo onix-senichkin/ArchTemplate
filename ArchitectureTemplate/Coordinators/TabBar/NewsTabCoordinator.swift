@@ -10,7 +10,6 @@ import UIKit
 
 protocol NewsTabCoordinatorTransitions: class {
     
-    func updateReadingListBadge()
 }
 
 class NewsTabCoordinator: TabBarItemCoordinatorType {
@@ -56,7 +55,4 @@ class NewsTabCoordinator: TabBarItemCoordinatorType {
 
 extension NewsTabCoordinator: NewsListCoordinatorTransitions, NewsList2CoordinatorTransitions {
  
-    func updateReadingListBadge() {
-        transitions?.updateReadingListBadge()
-    }
 }

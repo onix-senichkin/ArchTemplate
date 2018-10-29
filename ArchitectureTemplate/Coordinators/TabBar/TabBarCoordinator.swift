@@ -76,12 +76,6 @@ class TabBarCoordinator {
 //MARK: NewsTabCoordinator Transitions
 extension TabBarCoordinator: NewsTabCoordinatorTransitions {
     
-    func updateReadingListBadge() {
-        let index = TabBarItems.tabReadingList.rawValue
-        if index < tabCoordinators.count, let coordinator = tabCoordinators[index] as? ReadingListTabCoordinator {
-            coordinator.updateBadge()
-        }
-    }
 }
 
 //MARK: ReadingListTabCoordinator Transitions
