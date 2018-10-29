@@ -47,6 +47,10 @@ class AppCoordinator {
     }
 
     private func enterApp() {
+        //start user location service only after login
+        let userLocationService = UserLocationService()
+        serviceHolder.add(UserLocationService.self, for: userLocationService)
+
         tabBarCoordinator = TabBarCoordinator(window: window, serviceHolder: serviceHolder, transitions: self)
         tabBarCoordinator?.start()
         

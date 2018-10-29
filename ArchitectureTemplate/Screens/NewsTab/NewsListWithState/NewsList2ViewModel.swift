@@ -34,7 +34,7 @@ protocol NewsList2ViewModelType {
 class NewsList2ViewModel: NewsList2ViewModelType {
     
     fileprivate let coordinator: NewsList2CoordinatorType
-    private var readingListService: ReadingListService
+    private var readingListService: ReadingListServiceType
     
     private var items: [NewViewModel] = []
     

@@ -24,7 +24,7 @@ protocol ReadingListViewModelType {
 class ReadingListViewModel: ReadingListViewModelType {
     
     fileprivate let coordinator: ReadingListCoordinatorType
-    private var readingListService: ReadingListService
+    private var readingListService: ReadingListServiceType
     
     init(_ coordinator: ReadingListCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator

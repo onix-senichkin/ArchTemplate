@@ -25,7 +25,7 @@ protocol NewsListViewModelType {
 class NewsListViewModel: NewsListViewModelType {
     
     fileprivate let coordinator: NewsListCoordinatorType
-    private var readingListService: ReadingListService
+    private var readingListService: ReadingListServiceType
     
     private var items: [NewViewModel] = []
     

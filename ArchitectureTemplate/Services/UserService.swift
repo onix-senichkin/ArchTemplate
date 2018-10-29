@@ -9,6 +9,10 @@ import Foundation
 
 protocol UserServiceType: Service {
     
+    //getters
+    var userName: String { get }
+    var userEmail: String { get }
+    
     //actions
     func login(email: String, password: String, completion: @escaping SimpleClosure<String?>)
     func logout()

@@ -7,31 +7,48 @@
 //
 
 import UIKit
+import MapKit
 
 class ProfileVC: UITableViewController {
     
     var viewModel: ProfileViewModelType!
     
+    @IBOutlet weak var lbName: UILabel!
+    @IBOutlet weak var lbEmail: UILabel!
+    @IBOutlet weak var lbAddress: UILabel!
+    @IBOutlet weak var ivMapView: MKMapView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupUI()
+    }
+    
     deinit {
         print("ProfileVC - deinit")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private func setupUI() {
+        self.title = "Profile"
+        tableView.tableFooterView = UIView()
+        lbName.text = viewModel.getUserName()
+        lbEmail.text = viewModel.getUserEmail()
+        lbAddress.text = viewModel.getUserAddress()
+        ivMapView.showsUserLocation = true
+        ivMapView.userTrackingMode = .follow
         
+        viewModel.getUserAddress { [weak self] address in
+            self?.lbAddress.text = address
+        }
     }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        cell.textLabel?.text = "lorem ipsum"
-        return cell
-    }
+}
+
+//MARK:- UITableViewDelegate
+extension ProfileVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.logout()
+        if indexPath.row == ProfileCells.logout.rawValue {
+            viewModel.logout()
+        }
     }
 }

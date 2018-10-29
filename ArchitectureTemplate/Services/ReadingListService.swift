@@ -10,20 +10,24 @@ import Foundation
 
 protocol ReadingListServiceType: Service {
     
+    //callback
+    var callBackBadgeCountChanged: EmptyClosureType? { get set }
+
     //getters
     func getObjectIndex(from id: Int) -> Int
-    
-    //actions
     func getItemsCount() -> Int
     func getItem(index: Int) -> NewViewModel?
+    
+    //actions
     func getItem(objId: Int) -> NewViewModel?
     func addItem(_ item: NewViewModel)
+    func removeItem(_ item: NewViewModel)
+    func action(for item: NewViewModel)
 }
 
 class ReadingListService: ReadingListServiceType {
     
     var callBackBadgeCountChanged: EmptyClosureType?
-    
     private var items:[NewViewModel] = [] {
         didSet {
             callBackBadgeCountChanged?()
