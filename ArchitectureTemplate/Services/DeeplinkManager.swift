@@ -48,8 +48,9 @@ class DeepLinkManager: NSObject, DeepLinkManagerType {
     
     func reopenSavedLink() {
         if let link = tmpLink {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                self.handleLink(url: link)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [weak self] in
+                self?.handleLink(url: link)
+                self?.clearSavedLink()
             }
         }
     }

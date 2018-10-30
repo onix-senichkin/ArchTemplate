@@ -29,7 +29,7 @@ class SignInVC: UITableViewController {
         tfEmail.delegate = self
         tfPassword.delegate = self
         
-        if Platform.isSimulator {
+        if Platform.isSimulator || true {
             tfEmail.text = "john.doe@gmail.com"
             tfPassword.text = "qwert1234"
         }

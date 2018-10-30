@@ -20,6 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appCoordinator = AppCoordinator(window: window)
         }
         
+        //check for started url
+        if let launchOptions = launchOptions, launchOptions[UIApplication.LaunchOptionsKey.url] != nil {
+            if let url = launchOptions[UIApplication.LaunchOptionsKey.url] as? URL {
+                _ = self.application(application, open: url)
+            }
+        }
+        
+        //check for started 3D shortcut
+        /*if let launchOptions = launchOptions, launchOptions[UIApplication.LaunchOptionsKey.shortcutItem] != nil {
+            if let shortcut = launchOptions[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+                self.application(application, performActionFor: shortcut, completionHandler: { result in })
+            }
+        }*/
+        
         //deep link test
         /*DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             let urlString = "https://" + deepLinkHost + "/" + MethodsList.list.rawValue
@@ -45,6 +59,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Respond to Universal Links
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         return true
+    }
+    
+    //3D touch
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        if let userInfo = shortcutItem.userInfo, let path = userInfo["path"], path is String {
+            if let url = URL(string: path as! String) {
+                appCoordinator?.handleLink(url: url)
+            }
+        }
     }
 }
 
