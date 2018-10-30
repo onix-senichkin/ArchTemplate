@@ -12,6 +12,8 @@ protocol NewsListCoordinatorTransitions: class {
 }
 
 protocol NewsListCoordinatorType {
+    
+    func showNewDetails(_ model: NewViewModel)
 }
 
 class NewsListCoordinator: NewsListCoordinatorType {
@@ -38,5 +40,16 @@ class NewsListCoordinator: NewsListCoordinatorType {
     deinit {
         print("NewsListCoordinator - deinit")
     }
+    
+    //navigation
+    func showNewDetails(_ model: NewViewModel) {
+        guard let navigation = navigationController else { return }
+        let coordinator = NewDetailsCoordinator(navigationController: navigation, transitions: self, serviceHolder: serviceHolder, model: model)
+        coordinator.start()
+    }
+}
+
+//MARK:- NewDetailsCoordinator Transitions
+extension NewsListCoordinator: NewDetailsCoordinatorTransitions {
     
 }

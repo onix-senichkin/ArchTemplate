@@ -20,6 +20,7 @@ protocol NewsListViewModelType {
     //actions
     func getNews(sBlock: @escaping EmptyClosureType, eBlock: @escaping SimpleClosure<String>)
     func btnActionClicked(_ objId: Int)
+    func showNewDetails(_ index: Int)
 }
 
 class NewsListViewModel: NewsListViewModelType {
@@ -64,6 +65,13 @@ class NewsListViewModel: NewsListViewModelType {
         let filtered = items.filter( { $0.newId == objId } )
         if let first = filtered.first {
             readingListService.action(for: first)
+        }
+    }
+    
+    func showNewDetails(_ index: Int) {
+        if index < items.count {
+            let model = items[index]
+            coordinator.showNewDetails(model)
         }
     }
 }

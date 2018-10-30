@@ -22,6 +22,6 @@ class FeatureListService: FeatureListServiceType {
     
     //getters
     var bUseNewsListWithCompletion: Bool {
-        return false
+        return true
     }
 }

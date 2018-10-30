@@ -62,7 +62,8 @@ extension NewsListVC: UITableViewDataSource {
 extension NewsListVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.showNewDetails(indexPath.row)
     }
 }
 
