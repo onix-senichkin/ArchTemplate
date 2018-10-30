@@ -26,7 +26,7 @@ class AuthFlowCoordinator {
         self.window = window
         self.transitions = transitions
         self.serviceHolder = serviceHolder
-        self.userService = serviceHolder.get(by: UserServiceType.self)
+        self.userService = serviceHolder.get(by: UserService.self)
         self.userService.logout()
     }
     

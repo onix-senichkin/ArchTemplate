@@ -22,24 +22,11 @@ class AppCoordinator {
     }
     
     private func start() {
+        startInitialServices()
         startPreloginFlow()
     }
     
-    private func startServices() {
-        serviceHolder.removeAllService() //clean services before login, to remove old user data after logout
-        
-        let userService = UserService()
-        let readingListService = ReadingListService()
-        let featureListService = FeatureListService()
-        
-        serviceHolder.add(UserServiceType.self, for: userService)
-        serviceHolder.add(ReadingListService.self, for: readingListService)
-        serviceHolder.add(FeatureListService.self, for: featureListService)
-    }
-    
     private func startPreloginFlow() {
-        startServices() //clean services before login, to remove old user data after logout
-
         authCoordinator = AuthFlowCoordinator(window: window, transitions: self, serviceHolder: serviceHolder)
         authCoordinator?.start()
         
@@ -47,12 +34,14 @@ class AppCoordinator {
     }
 
     private func enterApp() {
-        //start user location service only after login
-        let userLocationService = UserLocationService()
-        serviceHolder.add(UserLocationService.self, for: userLocationService)
+        startOtherServices()
 
         tabBarCoordinator = TabBarCoordinator(window: window, serviceHolder: serviceHolder, transitions: self)
         tabBarCoordinator?.start()
+        
+        //reopen saved deeplink
+        let deepLinkService:DeepLinkManagerType = serviceHolder.get(by: DeepLinkManager.self)
+        deepLinkService.reopenSavedLink()
         
         authCoordinator = nil
     }
@@ -60,7 +49,47 @@ class AppCoordinator {
     deinit {
         print("AppCoordinator - deinit")
     }
+}
 
+//MARK:- Services routine
+extension AppCoordinator {
+    
+    private func startInitialServices() {
+        let userService = UserService()
+        let deepLinkManager = DeepLinkManager(coordinator: self, userService: userService)
+        let featureListService = FeatureListService()
+        
+        serviceHolder.add(UserService.self, for: userService)
+        serviceHolder.add(DeepLinkManager.self, for: deepLinkManager)
+        serviceHolder.add(FeatureListService.self, for: featureListService)
+    }
+    
+    private func startOtherServices() {
+        //start user location service only after login
+        let userLocationService = UserLocationService()
+        let readingListService = ReadingListService()
+        
+        serviceHolder.add(UserLocationService.self, for: userLocationService)
+        serviceHolder.add(ReadingListService.self, for: readingListService)
+    }
+    
+    private func cleanServices() {
+        serviceHolder.remove(by: UserLocationService.self)
+        serviceHolder.remove(by: ReadingListService.self)
+    }
+}
+
+//MARK: - Deeplinks routine
+extension AppCoordinator {
+    
+    func handleLink(url: URL) {
+        let deepLinkManager = serviceHolder.get(by: DeepLinkManager.self)
+        deepLinkManager.handleLink(url: url)
+    }
+    
+    func getTabBarCoordinator() -> TabBarCoordinator? {
+        return tabBarCoordinator
+    }
 }
 
 //MARK:- AuthFlowCoordinator Transitions
@@ -75,6 +104,16 @@ extension AppCoordinator: AuthFlowCoordinatorTransitions {
 extension AppCoordinator: TabBarCoordinatorTransitions {
     
     func logout() {
+
+        //clean up from prev user
+        let userService = serviceHolder.get(by: UserService.self)
+        let deepLinkService:DeepLinkManagerType = serviceHolder.get(by: DeepLinkManager.self)
+        deepLinkService.clearSavedLink()
+        userService.logout()
+        
+        cleanServices()
+        startOtherServices()
+        
         startPreloginFlow()
     }
 }

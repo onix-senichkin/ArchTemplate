@@ -8,7 +8,7 @@
 
 import UIKit
 
-private enum TabBarItems: Int {
+enum TabBarItems: Int {
     case tabNews = 0
     case tabReadingList
     case tabProfile
@@ -70,6 +70,33 @@ class TabBarCoordinator {
             window.rootViewController = tabBarController
             window.makeKeyAndVisible()
         }
+    }
+}
+
+//MARK: TabBarCoordinator {
+extension TabBarCoordinator {
+    
+    func getTabCoordinator<T>(index: Int) -> T? {
+        if index < tabCoordinators.count {
+            return tabCoordinators[index] as? T
+        }
+        return nil
+    }
+    
+    func selectTab(index: TabBarItems) {
+        let tabIndex = index.rawValue
+        tabBarController.selectedIndex = tabIndex
+        let root = getTabCoordinatorRootNavigation(index: index)
+        root?.popViewController(animated: false)
+    }
+    
+    private func getTabCoordinatorRootNavigation(index: TabBarItems) -> UINavigationController? {
+        let tabIndex = index.rawValue
+        if tabIndex < tabCoordinators.count {
+            let tabItem = tabCoordinators[tabIndex]
+            return tabItem.rootController
+        }
+        return nil
     }
 }
 

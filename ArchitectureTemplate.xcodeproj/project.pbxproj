@@ -40,6 +40,7 @@
 		7C43A8702182235C002BE368 /* NewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43A86E2182235C002BE368 /* NewCell.swift */; };
 		7C43A8712182235C002BE368 /* NewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C43A86F2182235C002BE368 /* NewCell.xib */; };
 		7C43A873218228D8002BE368 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C43A872218228D8002BE368 /* UITableViewCell.swift */; };
+		7C880E1B218851900030350B /* DeeplinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C880E1A218851900030350B /* DeeplinkManager.swift */; };
 		7C9D91B12187455300B5024D /* UserLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D91B02187455300B5024D /* UserLocationService.swift */; };
 		7CBE76C521806D4400900833 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBE76C421806D4400900833 /* AppDelegate.swift */; };
 		7CBE76CC21806D4600900833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CBE76CB21806D4600900833 /* Assets.xcassets */; };
@@ -97,6 +98,7 @@
 		7C43A86E2182235C002BE368 /* NewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCell.swift; sourceTree = "<group>"; };
 		7C43A86F2182235C002BE368 /* NewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewCell.xib; sourceTree = "<group>"; };
 		7C43A872218228D8002BE368 /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		7C880E1A218851900030350B /* DeeplinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkManager.swift; sourceTree = "<group>"; };
 		7C9D91B02187455300B5024D /* UserLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationService.swift; sourceTree = "<group>"; };
 		7CBE76C121806D4400900833 /* Template.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Template.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CBE76C421806D4400900833 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -303,8 +305,9 @@
 			children = (
 				7CBE76E321806FFF00900833 /* ServiceHolder.swift */,
 				7CBE76F12180752B00900833 /* UserService.swift */,
-				7CD708A6218336120041A04F /* ReadingListService.swift */,
+				7C880E1A218851900030350B /* DeeplinkManager.swift */,
 				6B265501218361C500DDFEEF /* FeatureListService.swift */,
+				7CD708A6218336120041A04F /* ReadingListService.swift */,
 				7C9D91B02187455300B5024D /* UserLocationService.swift */,
 			);
 			path = Services;
@@ -541,6 +544,7 @@
 				7CBE76F02180744200900833 /* NewsListVC.swift in Sources */,
 				6B709CB82180BE6D00FBE4CC /* SignInRequest.swift in Sources */,
 				7CBE76E221806FD500900833 /* AppCoordinator.swift in Sources */,
+				7C880E1B218851900030350B /* DeeplinkManager.swift in Sources */,
 				6B2655002183610000DDFEEF /* NewsList2Coordinator.swift in Sources */,
 				7CBE76C521806D4400900833 /* AppDelegate.swift in Sources */,
 				6B709CC62180D97800FBE4CC /* TabBarCoordinator.swift in Sources */,

@@ -12,6 +12,7 @@ protocol UserServiceType: Service {
     //getters
     var userName: String { get }
     var userEmail: String { get }
+    var userLoggedIn: Bool { get }
     
     //actions
     func login(email: String, password: String, completion: @escaping SimpleClosure<String?>)
@@ -57,5 +58,9 @@ class UserService: UserServiceType {
     
     var userEmail: String {
         return userViewModel?.userEmail ?? "n/a"
+    }
+    
+    var userLoggedIn: Bool {
+        return userViewModel != nil
     }
 }

@@ -36,7 +36,7 @@ class ProfileViewModel: ProfileViewModelType {
     
     init(_ coordinator: ProfileCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
-        self.userService = serviceHolder.get(by: UserServiceType.self)
+        self.userService = serviceHolder.get(by: UserService.self)
         self.userLocationServive = serviceHolder.get(by: UserLocationService.self)
     }
     

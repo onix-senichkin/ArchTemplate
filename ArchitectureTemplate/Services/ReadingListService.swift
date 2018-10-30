@@ -34,6 +34,10 @@ class ReadingListService: ReadingListServiceType {
         }
     }
     
+    deinit {
+        print("ReadingListService deinit")
+    }
+
     //getters
     func getObjectIndex(from id: Int) -> Int {
         let filtered = items.filter( { $0.newId == id })

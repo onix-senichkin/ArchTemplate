@@ -16,6 +16,10 @@ protocol FeatureListServiceType: Service {
 
 class FeatureListService: FeatureListServiceType {
     
+    deinit {
+        print("FeatureListService deinit")
+    }
+    
     //getters
     var bUseNewsListWithCompletion: Bool {
         return false

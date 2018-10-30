@@ -23,7 +23,7 @@ class SignInViewModel: SignInViewModelType {
     init(_ coordinator: SignInCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
         self.serviceHolder = serviceHolder
-        self.userService = serviceHolder.get(by: UserServiceType.self)
+        self.userService = serviceHolder.get(by: UserService.self)
     }
     
     func validate(email: String, password: String) -> String? {
