@@ -21,12 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         //deep link test
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        /*DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             let urlString = "https://" + deepLinkHost + "/" + MethodsList.list.rawValue
             if let url = URL(string: urlString) {
                 _ = self.application(application, open: url, options: [:])
             }
-        }
+        }*/
 
         return true
     }
