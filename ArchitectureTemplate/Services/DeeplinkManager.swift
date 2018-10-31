@@ -12,13 +12,15 @@ import UIKit
 let deepLinkHost = "www.onix.sample.app"
 
 /*
- http://www.onix.sample.app/news
- http://www.onix.sample.app/list
- http://www.onix.sample.app/profile
+ http://www.onix.sample.app/news //open news tab
+ http://www.onix.sample.app/topNew //open first new
+ http://www.onix.sample.app/list //open reading list tab
+ http://www.onix.sample.app/profile //open profile tab
  */
 
 enum MethodsList: String {
     case news = "news"
+    case topNew = "topNew"
     case list = "list"
     case profile = "profile"
     case undefined = "n/a"
@@ -76,13 +78,13 @@ extension DeepLinkManager {
             case .news: showTabNews()
             case .list: showTabList()
             case .profile: showTabProfile()
-
+            case .topNew: showTopNew()
             default: break
         }
     }
     
     //MARK: - Coordinators
-    var newsCoordinator: NewsTabCoordinator? {
+    var newsCoordinator: NewsTabCoordinatorType? {
         let tabBarCoordinator = appCoordinator.getTabBarCoordinator()
         return tabBarCoordinator?.getTabCoordinator(index: TabBarItems.tabNews.rawValue)
     }
@@ -104,6 +106,12 @@ extension DeepLinkManager {
     
     func showTabNews() {
         selectTabAction(TabBarItems.tabNews)
+    }
+    
+    func showTopNew() {
+        selectTabAction(TabBarItems.tabNews)
+        let coordinator = self.newsCoordinator
+        coordinator?.showTopNew()
     }
 }
 

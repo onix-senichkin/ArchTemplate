@@ -12,13 +12,19 @@ protocol NewsTabCoordinatorTransitions: class {
     
 }
 
-class NewsTabCoordinator: TabBarItemCoordinatorType {
+protocol NewsTabCoordinatorType {
+    
+    func showTopNew()
+}
+
+class NewsTabCoordinator: NewsTabCoordinatorType, TabBarItemCoordinatorType {
 
     let rootController = UINavigationController()
     let tabBarItem: UITabBarItem = UITabBarItem(title: "News", image: UIImage(named: "icNews"), selectedImage: nil)
     private weak var transitions: NewsTabCoordinatorTransitions?
     private var serviceHolder: ServiceHolder
     private var featureListService: FeatureListService
+    private weak var newCoordinator: NewsListCoordinatorType?
 
     init(serviceHolder: ServiceHolder, transitions: NewsTabCoordinatorTransitions) {
         self.serviceHolder = serviceHolder
@@ -41,11 +47,13 @@ class NewsTabCoordinator: TabBarItemCoordinatorType {
     private func startNewsWithCompletion() {
         let coordinator = NewsListCoordinator(navigationController: rootController, transitions: self, serviceHolder: serviceHolder)
         coordinator.start()
+        newCoordinator = coordinator
     }
     
     private func startNewsWithState() {
         let coordinator = NewsList2Coordinator(navigationController: rootController, transitions: self, serviceHolder: serviceHolder)
         coordinator.start()
+        newCoordinator = coordinator
     }
 
     deinit {
@@ -53,6 +61,15 @@ class NewsTabCoordinator: TabBarItemCoordinatorType {
     }
 }
 
+//MARK:- Deeplink routine
+extension NewsTabCoordinator {
+    
+    func showTopNew() {
+        newCoordinator?.showTopNew()
+    }
+}
+
+//MARK:- NewsListCoordinator Transitions
 extension NewsTabCoordinator: NewsListCoordinatorTransitions, NewsList2CoordinatorTransitions {
  
 }

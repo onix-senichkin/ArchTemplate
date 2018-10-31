@@ -25,16 +25,6 @@ class NewDetailsVC: UITableViewController {
         setupUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        super.viewWillDisappear(animated)
-    }
-
     private func setupUI() {
         self.title = "New full info"
             

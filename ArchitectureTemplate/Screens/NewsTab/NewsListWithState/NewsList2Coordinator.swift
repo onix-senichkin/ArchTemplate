@@ -14,7 +14,7 @@ protocol NewsList2CoordinatorTransitions: class {
 protocol NewsList2CoordinatorType {
 }
 
-class NewsList2Coordinator: NewsList2CoordinatorType {
+class NewsList2Coordinator: NewsListCoordinatorType, NewsList2CoordinatorType {
     
     private weak var navigationController: UINavigationController?
     private weak var transitions: NewsList2CoordinatorTransitions?
@@ -38,5 +38,24 @@ class NewsList2Coordinator: NewsList2CoordinatorType {
     deinit {
         print("NewsList2Coordinator - deinit")
     }
+    
+    //navigation
+    func showNewDetails(_ model: NewViewModel) {
+        guard let navigation = navigationController else { return }
+        let coordinator = NewDetailsCoordinator(navigationController: navigation, transitions: self, serviceHolder: serviceHolder, model: model)
+        coordinator.start()
+    }
+}
+
+//MARK:- Deeplink
+extension NewsList2Coordinator {
+    
+    func showTopNew() {
+        
+    }
+}
+
+//MARK:- NewDetailsCoordinator Transitions
+extension NewsList2Coordinator: NewDetailsCoordinatorTransitions {
     
 }

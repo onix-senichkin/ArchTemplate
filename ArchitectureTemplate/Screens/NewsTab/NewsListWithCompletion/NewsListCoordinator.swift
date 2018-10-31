@@ -11,9 +11,10 @@ import UIKit
 protocol NewsListCoordinatorTransitions: class {
 }
 
-protocol NewsListCoordinatorType {
+protocol NewsListCoordinatorType: class {
     
     func showNewDetails(_ model: NewViewModel)
+    func showTopNew()
 }
 
 class NewsListCoordinator: NewsListCoordinatorType {
@@ -46,6 +47,14 @@ class NewsListCoordinator: NewsListCoordinatorType {
         guard let navigation = navigationController else { return }
         let coordinator = NewDetailsCoordinator(navigationController: navigation, transitions: self, serviceHolder: serviceHolder, model: model)
         coordinator.start()
+    }
+}
+
+//MARK:- Deeplink
+extension NewsListCoordinator {
+    
+    func showTopNew() {
+        controller?.showTopNew()
     }
 }
 

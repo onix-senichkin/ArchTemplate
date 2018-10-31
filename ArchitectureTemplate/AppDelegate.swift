@@ -63,10 +63,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //3D touch
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        if let userInfo = shortcutItem.userInfo, let path = userInfo["path"], path is String {
-            if let url = URL(string: path as! String) {
-                appCoordinator?.handleLink(url: url)
-            }
+        let type = shortcutItem.type
+        if let url = URL(string: type) {
+            appCoordinator?.handleLink(url: url)
         }
     }
 }

@@ -37,11 +37,6 @@
 			<string>News</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string> http://www.onix.sample.app/news</string>
-			<key>UIApplicationShortcutItemUserInfo</key>
-			<dict>
-				<key>path</key>
-				<string>http://www.onix.sample.app/news</string>
-			</dict>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>
@@ -50,11 +45,6 @@
 			<string>Reading List</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>http://www.onix.sample.app/list</string>
-			<key>UIApplicationShortcutItemUserInfo</key>
-			<dict>
-				<key>path</key>
-				<string>http://www.onix.sample.app/list</string>
-			</dict>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>
@@ -63,11 +53,14 @@
 			<string>Profile</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>http://www.onix.sample.app/profile</string>
-			<key>UIApplicationShortcutItemUserInfo</key>
-			<dict>
-				<key>path</key>
-				<string>http://www.onix.sample.app/profile</string>
-			</dict>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>icNews</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Top New</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>http://www.onix.sample.app/topNew</string>
 		</dict>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>

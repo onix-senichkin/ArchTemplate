@@ -45,6 +45,14 @@ class NewsListVC: UIViewController {
     }
 }
 
+//MARK:- Deeplink
+extension NewsListVC {
+    
+    func showTopNew() {
+        viewModel.showNewDetails(0)
+    }
+}
+
 //MARK:- UITableViewDataSource
 extension NewsListVC: UITableViewDataSource {
     
