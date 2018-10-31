@@ -54,7 +54,7 @@ class NewsList2Coordinator: NewsListCoordinatorType, NewsList2CoordinatorType {
 extension NewsList2Coordinator {
     
     func showTopNew() {
-        
+        controller?.viewModel.showNewDetails(0)
     }
 }
 
