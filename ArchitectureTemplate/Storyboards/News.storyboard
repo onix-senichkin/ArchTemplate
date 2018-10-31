@@ -18,27 +18,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dUW-2X-lK2">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wqK-eb-9g7">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="YvT-Dq-Pfs">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
                                 <connections>
-                                    <outlet property="dataSource" destination="qtX-CL-XKL" id="Pq0-eD-5bB"/>
-                                    <outlet property="delegate" destination="qtX-CL-XKL" id="Ost-yz-OAi"/>
+                                    <outlet property="dataSource" destination="qtX-CL-XKL" id="fLz-vv-5kK"/>
+                                    <outlet property="delegate" destination="qtX-CL-XKL" id="q8I-j4-ZXW"/>
                                 </connections>
-                            </tableView>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dUW-2X-lK2" firstAttribute="leading" secondItem="pjo-Oa-rFX" secondAttribute="leading" id="KmW-wB-f1A"/>
-                            <constraint firstItem="pjo-Oa-rFX" firstAttribute="bottom" secondItem="dUW-2X-lK2" secondAttribute="bottom" id="bKL-Oq-z2X"/>
-                            <constraint firstItem="dUW-2X-lK2" firstAttribute="top" secondItem="pjo-Oa-rFX" secondAttribute="top" id="fBz-K1-lM8"/>
-                            <constraint firstItem="pjo-Oa-rFX" firstAttribute="trailing" secondItem="dUW-2X-lK2" secondAttribute="trailing" id="kq6-Xx-R24"/>
+                            <constraint firstItem="pjo-Oa-rFX" firstAttribute="trailing" secondItem="wqK-eb-9g7" secondAttribute="trailing" id="7yf-yb-02g"/>
+                            <constraint firstItem="pjo-Oa-rFX" firstAttribute="bottom" secondItem="wqK-eb-9g7" secondAttribute="bottom" id="L2N-kr-F5e"/>
+                            <constraint firstItem="wqK-eb-9g7" firstAttribute="top" secondItem="pjo-Oa-rFX" secondAttribute="top" id="V5Y-Zb-HYb"/>
+                            <constraint firstItem="wqK-eb-9g7" firstAttribute="leading" secondItem="pjo-Oa-rFX" secondAttribute="leading" id="eDB-NG-r7D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pjo-Oa-rFX"/>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="dUW-2X-lK2" id="aT0-Il-z4X"/>
+                        <outlet property="collectionView" destination="wqK-eb-9g7" id="zDv-z9-czD"/>
                         <segue destination="c7n-Su-pyV" kind="show" identifier="toDetails" id="OjG-Vc-2Rl"/>
                     </connections>
                 </viewController>

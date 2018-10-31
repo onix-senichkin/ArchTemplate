@@ -50,12 +50,13 @@ extension ReadingListVC {
 extension ReadingListVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.showNewDetails(indexPath.row)
     }
 }
 
-//MARK:- NewCellDelegate
-extension ReadingListVC: NewCellDelegate {
+//MARK:- NewTableCellDelegate
+extension ReadingListVC: NewTableCellDelegate {
     
     func btnActionClicked(_ objId: Int) {
 

@@ -21,14 +21,15 @@ protocol NewsList2ViewModelType {
     var callback: ((NewsList2ViewModelState) -> ())? { get set }
     
     //datasource
-    func registerCells(for tableView: UITableView)
+    func registerCells(for collectionView: UICollectionView)
     func getNumberOfRows() -> Int
-    func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath, delegate: UIViewController) -> UITableViewCell
+    func getCell(collectionView: UICollectionView, atIndexPath indexPath: IndexPath, delegate: UIViewController) -> UICollectionViewCell
     func getRowIndex(from objId: Int) -> Int
 
     //actions
     func getNews()
     func btnActionClicked(_ objId: Int)
+    func showNewDetails(_ index: Int)
 }
 
 class NewsList2ViewModel: NewsList2ViewModelType {
@@ -83,13 +84,20 @@ class NewsList2ViewModel: NewsList2ViewModelType {
             readingListService.action(for: first)
         }
     }
+    
+    func showNewDetails(_ index: Int) {
+        if index < items.count {
+            let model = items[index]
+            coordinator.showNewDetails(model)
+        }
+    }
 }
 
 //MARK: Datasource
 extension NewsList2ViewModel {
     
-    func registerCells(for tableView: UITableView) {
-        tableView.register(UINib(nibName: NewCell.identifier, bundle: nil), forCellReuseIdentifier: NewCell.identifier)
+    func registerCells(for collectionView: UICollectionView) {
+        collectionView.register(UINib(nibName: NewCollectionCell.identifier, bundle: nil), forCellWithReuseIdentifier: NewCollectionCell.identifier)
     }
     
     func getNumberOfRows() -> Int {
@@ -105,14 +113,14 @@ extension NewsList2ViewModel {
         return 0
     }
     
-    func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath, delegate: UIViewController) -> UITableViewCell {
+    func getCell(collectionView: UICollectionView, atIndexPath indexPath: IndexPath, delegate: UIViewController) -> UICollectionViewCell {
         let index = indexPath.row
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewCell.identifier, for: indexPath) as? NewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewCollectionCell.identifier, for: indexPath) as? NewCollectionCell
         if index < items.count {
             let model = items[index]
-            cell?.customInit(item: model, delegate: delegate as? NewCellDelegate)
+            cell?.customInit(item: model, delegate: delegate as? NewTableCellDelegate)
         }
-        return cell ?? UITableViewCell()
+        return cell ?? UICollectionViewCell()
     }
 
 }

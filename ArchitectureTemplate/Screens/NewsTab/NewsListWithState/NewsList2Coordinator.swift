@@ -12,6 +12,9 @@ protocol NewsList2CoordinatorTransitions: class {
 }
 
 protocol NewsList2CoordinatorType {
+    
+    //navigation
+    func showNewDetails(_ model: NewViewModel)
 }
 
 class NewsList2Coordinator: NewsListCoordinatorType, NewsList2CoordinatorType {

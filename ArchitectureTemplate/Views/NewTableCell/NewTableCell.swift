@@ -1,5 +1,5 @@
 //
-//  NewCell.swift
+//  NewTableCell.swift
 //  ArchitectureTemplate
 //
 //  Created by Denis Senichkin on 10/25/18.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol NewCellDelegate: class {
+protocol NewTableCellDelegate: class {
     
     func btnActionClicked(_ objId: Int)
 }
 
-class NewCell: UITableViewCell {
+class NewTableCell: UITableViewCell {
 
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var lbDesc: UILabel!
     @IBOutlet weak var btnAction: UIButton!
     
-    private weak var delegate: NewCellDelegate?
+    private weak var delegate: NewTableCellDelegate?
     
     private var objId: Int = -1
     
@@ -28,7 +28,7 @@ class NewCell: UITableViewCell {
         // Initialization code
     }
     
-    func customInit(item: NewViewModel, delegate: NewCellDelegate? = nil) {
+    func customInit(item: NewViewModel, delegate: NewTableCellDelegate? = nil) {
         self.objId = item.newId
         self.delegate = delegate
 
@@ -36,13 +36,10 @@ class NewCell: UITableViewCell {
         self.lbDesc.text = item.newDesc
         self.btnAction.setTitle(item.newInReadingListTitle, for: .normal)
         self.contentView.backgroundColor = item.cellBkg
-        
-        //self.btnAction.setNeedsLayout()
-        //self.btnAction.layoutIfNeeded()
     }
 }
 
-extension NewCell {
+extension NewTableCell {
     
     @IBAction func btnActionClicked(_ sender: UIButton) {
         if objId >= 0 {

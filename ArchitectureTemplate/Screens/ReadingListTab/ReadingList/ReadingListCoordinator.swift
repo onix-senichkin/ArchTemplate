@@ -14,6 +14,8 @@ protocol ReadingListCoordinatorTransitions: class {
 
 protocol ReadingListCoordinatorType {
     
+    //navigation
+    func showNewDetails(_ model: NewViewModel)
 }
 
 class ReadingListCoordinator: ReadingListCoordinatorType {
@@ -40,4 +42,16 @@ class ReadingListCoordinator: ReadingListCoordinatorType {
     deinit {
         print("ReadingListCoordinator - deinit")
     }
+    
+    //navigation
+    func showNewDetails(_ model: NewViewModel) {
+        guard let navigation = navigationController else { return }
+        let coordinator = NewDetailsCoordinator(navigationController: navigation, transitions: self, serviceHolder: serviceHolder, model: model)
+        coordinator.start()
+    }
+}
+
+//MARK:- NewDetailsCoordinator Transitions
+extension ReadingListCoordinator: NewDetailsCoordinatorTransitions {
+    
 }

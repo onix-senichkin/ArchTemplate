@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let kCellHeight:CGFloat = 75
+
 class NewsListVC2: UIViewController {
     
     var viewModel: NewsList2ViewModel! {
@@ -18,7 +20,7 @@ class NewsListVC2: UIViewController {
         }
     }
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     deinit {
         print("NewsListVC2 - deinit")
@@ -33,13 +35,13 @@ class NewsListVC2: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
+        
+        self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems) //fix for blink on reload data
     }
     
     private func setup() {
         self.title = "News 2"
-        viewModel.registerCells(for: tableView)
-        tableView.tableFooterView = UIView()
+        viewModel.registerCells(for: collectionView)
     }
     
     private func getNewsItems() {
@@ -61,7 +63,7 @@ extension NewsListVC2 {
     }
     
     fileprivate func itemReceived() {
-        tableView.reloadData()
+        collectionView.reloadData()
     }
     
     fileprivate func errorReceived(errorStr: String) {
@@ -70,15 +72,22 @@ extension NewsListVC2 {
 }
 
 //MARK:- UITableViewDataSource
-extension NewsListVC2: UITableViewDataSource {
+extension NewsListVC2: UICollectionViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.getNumberOfRows()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = viewModel.cellForTableView(tableView: tableView, atIndexPath: indexPath, delegate: self)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = viewModel.getCell(collectionView: collectionView, atIndexPath: indexPath, delegate: self)
         return cell
+    }
+}
+
+extension NewsListVC2: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width/2.0, height: kCellHeight)
     }
 }
 
@@ -86,21 +95,19 @@ extension NewsListVC2: UITableViewDataSource {
 extension NewsListVC2: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.showNewDetails(indexPath.row)
     }
 }
 
-//MARK:- NewCellDelegate
-extension NewsListVC2: NewCellDelegate {
+//MARK:- NewTableCellDelegate
+extension NewsListVC2: NewTableCellDelegate {
     
     func btnActionClicked(_ objId: Int) {
         viewModel.btnActionClicked(objId)
         
         let index = viewModel.getRowIndex(from: objId)
         let indexPath = IndexPath(row: index, section: 0)
-        self.tableView.beginUpdates()
-        self.tableView.reloadRows(at: [indexPath], with: .none)
-        self.tableView.endUpdates()
-        
+        self.collectionView.reloadItems(at: [indexPath])
     }
 }

@@ -75,8 +75,8 @@ extension NewsListVC: UITableViewDelegate {
     }
 }
 
-//MARK:- NewCellDelegate
-extension NewsListVC: NewCellDelegate {
+//MARK:- NewTableCellDelegate
+extension NewsListVC: NewTableCellDelegate {
     
     func btnActionClicked(_ objId: Int) {
         viewModel.btnActionClicked(objId)

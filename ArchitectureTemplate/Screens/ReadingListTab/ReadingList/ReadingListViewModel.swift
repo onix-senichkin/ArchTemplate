@@ -19,6 +19,7 @@ protocol ReadingListViewModelType {
     
     //actions
     func removeFromReadingList(_ objId: Int)
+    func showNewDetails(_ objId: Int)
 }
 
 class ReadingListViewModel: ReadingListViewModelType {
@@ -42,13 +43,19 @@ class ReadingListViewModel: ReadingListViewModelType {
             readingListService.removeItem(model)
         }
     }
+    
+    func showNewDetails(_ index: Int) {
+        if let model = readingListService.getItem(index: index) {
+            coordinator.showNewDetails(model)
+        }
+    }
 }
 
 //MARK: Datasource
 extension ReadingListViewModel {
     
     func registerCells(for tableView: UITableView) {
-        tableView.register(UINib(nibName: NewCell.identifier, bundle: nil), forCellReuseIdentifier: NewCell.identifier)
+        tableView.register(UINib(nibName: NewTableCell.identifier, bundle: nil), forCellReuseIdentifier: NewTableCell.identifier)
     }
     
     func getNumberOfRows() -> Int {
@@ -61,10 +68,10 @@ extension ReadingListViewModel {
     
     func cellForTableView(tableView: UITableView, atIndexPath indexPath: IndexPath, delegate: UIViewController) -> UITableViewCell {
         let index = indexPath.row
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewCell.identifier, for: indexPath) as? NewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewTableCell.identifier, for: indexPath) as? NewTableCell
         let count = readingListService.getItemsCount()
         if index < count, let model = readingListService.getItem(index: index) {
-            cell?.customInit(item: model, delegate: delegate as? NewCellDelegate)
+            cell?.customInit(item: model, delegate: delegate as? NewTableCellDelegate)
         }
         return cell ?? UITableViewCell()
     }

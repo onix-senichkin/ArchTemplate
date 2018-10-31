@@ -67,7 +67,6 @@ extension DeepLinkManager {
             tmpLink = url
             return
         }
-        tmpLink = nil
 
         let method = url.path.replacingOccurrences(of: "/", with: "")
         let methodEnum:MethodsList? = MethodsList.init(rawValue: method)

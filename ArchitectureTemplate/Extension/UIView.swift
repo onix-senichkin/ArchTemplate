@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension UITableViewCell {
+extension UIView {
     
     class var identifier: String {
         let separator = "."
