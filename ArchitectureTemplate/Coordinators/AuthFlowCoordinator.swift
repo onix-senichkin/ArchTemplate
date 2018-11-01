@@ -21,13 +21,13 @@ class AuthFlowCoordinator {
     
     private var serviceHolder: ServiceHolder
     private var userService: UserServiceType
+    private var registrationFlowCoordinator: RegistrationFlowCoordinator?
     
     init(window: UIWindow, transitions: AuthFlowCoordinatorTransitions, serviceHolder: ServiceHolder) {
         self.window = window
         self.transitions = transitions
         self.serviceHolder = serviceHolder
         self.userService = serviceHolder.get(by: UserService.self)
-        self.userService.logout()
     }
     
     func start() {
@@ -50,5 +50,14 @@ extension AuthFlowCoordinator: SignInCoordinatorTransitions {
     func userDidLogin() {
         transitions?.userDidLogin()
     }
+    
+    func signUp() {
+        registrationFlowCoordinator = RegistrationFlowCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
+        registrationFlowCoordinator?.start()
+    }
+}
+
+extension AuthFlowCoordinator: RegistrationFlowCoordinatorTransitions {
+    
 }
 

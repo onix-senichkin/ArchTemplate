@@ -10,8 +10,10 @@ import Foundation
 
 protocol SignInViewModelType {
     
+    //actions
     func validate(email: String, password: String) -> String?
     func login(email: String, password: String, completion: @escaping SimpleClosure<String?>)
+    func signUp()
 }
 
 class SignInViewModel: SignInViewModelType {
@@ -26,6 +28,11 @@ class SignInViewModel: SignInViewModelType {
         self.userService = serviceHolder.get(by: UserService.self)
     }
     
+    deinit {
+        print("SignInViewModel - deinit")
+    }
+    
+    //actions
     func validate(email: String, password: String) -> String? {
         //#TODO Should be replaced with validate regex and rules
         if email.count == 0 {
@@ -55,8 +62,7 @@ class SignInViewModel: SignInViewModelType {
         }
     }
     
-    deinit {
-        print("SignInViewModel - deinit")
+    func signUp() {
+        coordinator.signUp()
     }
-    
 }

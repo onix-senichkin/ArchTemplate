@@ -11,11 +11,13 @@ import UIKit
 protocol SignInCoordinatorTransitions: class {
     
     func userDidLogin()
+    func signUp()
 }
 
 protocol SignInCoordinatorType {
  
     func userDidLogin()
+    func signUp()
 }
 
 class SignInCoordinator: SignInCoordinatorType {
@@ -45,5 +47,9 @@ class SignInCoordinator: SignInCoordinatorType {
     
     func userDidLogin() {
         transitions?.userDidLogin()
+    }
+    
+    func signUp() {
+        transitions?.signUp()
     }
 }

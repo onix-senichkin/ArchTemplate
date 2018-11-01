@@ -78,4 +78,8 @@ extension SignInVC {
             }
         }
     }
+    
+    @IBAction func btnSignUpClicked(_ sender: UIButton) {
+        viewModel.signUp()
+    }
 }

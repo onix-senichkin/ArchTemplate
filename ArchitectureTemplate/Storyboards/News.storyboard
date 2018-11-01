@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Imi-6T-7yI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--News ListVC2-->
+        <!--Title-->
         <scene sceneID="3Dh-by-S06">
             <objects>
                 <viewController storyboardIdentifier="NewsListVC2" id="qtX-CL-XKL" customClass="NewsListVC2" customModule="Template" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wqK-eb-9g7">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="YvT-Dq-Pfs">
                                     <size key="itemSize" width="50" height="50"/>
@@ -43,6 +43,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pjo-Oa-rFX"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="nqu-GH-hPy"/>
                     <connections>
                         <outlet property="collectionView" destination="wqK-eb-9g7" id="zDv-z9-czD"/>
                         <segue destination="c7n-Su-pyV" kind="show" identifier="toDetails" id="OjG-Vc-2Rl"/>
@@ -50,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5YZ-zw-CYl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1596" y="862"/>
+            <point key="canvasLocation" x="-656.79999999999995" y="861.3193403298352"/>
         </scene>
         <!--New DetailsVC-->
         <scene sceneID="YeG-uo-cw6">
@@ -113,9 +114,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RfH-VP-DlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-290" y="463"/>
+            <point key="canvasLocation" x="447" y="486"/>
         </scene>
-        <!--News ListVC-->
+        <!--Title-->
         <scene sceneID="rxY-47-kv6">
             <objects>
                 <viewController storyboardIdentifier="NewsListVC" id="7k9-sS-N88" customClass="NewsListVC" customModule="Template" customModuleProvider="target" sceneMemberID="viewController">
@@ -124,7 +125,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sZm-Ja-8Ks">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -142,6 +143,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="USy-Y7-VKE"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="mKj-zJ-9Xq"/>
                     <connections>
                         <outlet property="tableView" destination="sZm-Ja-8Ks" id="EH4-9j-DJa"/>
                         <segue destination="c7n-Su-pyV" kind="show" identifier="toDetails" id="nJe-ca-Krq"/>
@@ -149,10 +151,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="js3-uY-ZXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1596" y="161"/>
+            <point key="canvasLocation" x="-657" y="165"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Aoq-zR-Jb8">
+            <objects>
+                <navigationController storyboardIdentifier="root2" automaticallyAdjustsScrollViewInsets="NO" id="NSi-pS-4PY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Te4-iV-ZbA">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qtX-CL-XKL" kind="relationship" relationship="rootViewController" id="ezp-YW-QAJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E6K-ip-OYO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1596" y="861.3193403298352"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fuw-d4-7MB">
+            <objects>
+                <navigationController storyboardIdentifier="root1" automaticallyAdjustsScrollViewInsets="NO" id="Imi-6T-7yI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fSM-rL-HrC">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7k9-sS-N88" kind="relationship" relationship="rootViewController" id="mUc-AJ-VWR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F2W-h9-J0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1596" y="165"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OjG-Vc-2Rl"/>
+        <segue reference="nJe-ca-Krq"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -31,7 +31,7 @@ class NewsListVC: UIViewController {
     }
     
     private func setup() {
-        self.title = "News"
+        self.navigationItem.title = "News1"
         viewModel.registerCells(for: tableView)
         tableView.tableFooterView = UIView()
     }

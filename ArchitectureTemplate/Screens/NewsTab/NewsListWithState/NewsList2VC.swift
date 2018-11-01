@@ -40,7 +40,7 @@ class NewsListVC2: UIViewController {
     }
     
     private func setup() {
-        self.title = "News 2"
+        self.navigationItem.title = "News2"
         viewModel.registerCells(for: collectionView)
     }
     
