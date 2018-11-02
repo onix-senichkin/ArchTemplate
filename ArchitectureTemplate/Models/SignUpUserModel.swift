@@ -13,5 +13,9 @@ class SignUpUserModel {
     var email:String?
     var firstName:String?
     var lastName:String?
+    var profession: String?
+    var gender: String?
+    var city: String?
+    var address: String?
     var phone:String?
 }

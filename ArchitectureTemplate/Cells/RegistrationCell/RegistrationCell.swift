@@ -13,6 +13,10 @@ enum RegistrationCellType: String {
     case email = "Email"
     case firstName = "First Name"
     case lastName = "Last Name"
+    case profession = "Profession"
+    case genger = "Gender"
+    case city = "City"
+    case address = "Address"
     case phone = "Phone"
 }
 
@@ -23,10 +27,12 @@ protocol RegistrationCellDelegate: class {
 
 class RegistrationCell: UITableViewCell {
 
+    @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var tfInput: UITextField!
     
-    weak var delegate: RegistrationCellDelegate?
-    var cellType: RegistrationCellType = .defaultType
+    private weak var delegate: RegistrationCellDelegate?
+    private var cellType: RegistrationCellType = .defaultType
+    private weak var model: SignUpUserViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,19 +41,50 @@ class RegistrationCell: UITableViewCell {
         tfInput.returnKeyType = .next
     }
     
-    func customInit(type: RegistrationCellType, returnKeyType: UIReturnKeyType, delegate: RegistrationCellDelegate?) {
+    func customInit(type: RegistrationCellType, returnKeyType: UIReturnKeyType, model: SignUpUserViewModel, delegate: RegistrationCellDelegate?) {
         self.delegate = delegate
         self.cellType = type
+        self.model = model
         
-        tfInput.placeholder = type.rawValue
+        lbTitle.text = model.getTitleValue(for: type)
+        tfInput.placeholder = model.getTitleValue(for: type)
+        tfInput.text = model.getValue(for: type)
         tfInput.returnKeyType = returnKeyType
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        return tfInput.becomeFirstResponder()
+    }
+    
+    func validate() {
+        guard let model = model else { return }
+        let validated = model.validate(for: cellType)
+        if validated {
+            tfInput.layer.borderColor = UIColor.clear.cgColor
+            tfInput.layer.borderWidth = 0
+        } else {
+            tfInput.layer.borderColor = UIColor.red.cgColor
+            tfInput.layer.borderWidth = 1
+        }
     }
 }
 
 extension RegistrationCell: UITextFieldDelegate {
     
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        let value = textField.text ?? ""
+        model?.valueChanged(for: cellType, value: value)
+        self.validate()
+
+        return true
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        delegate?.doneClicked(type: cellType, value: textField.text ?? "")
+        let value = textField.text ?? ""
+        model?.valueChanged(for: cellType, value: value)
+        self.validate()
+        
+        delegate?.doneClicked(type: cellType, value: value)
         return true
     }
 }

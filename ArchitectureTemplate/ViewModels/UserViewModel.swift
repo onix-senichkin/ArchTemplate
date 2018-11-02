@@ -18,10 +18,10 @@ class UserViewModel {
 
     //MARK: Getters
     var userEmail: String {
-        return userModel.email
+        return userModel.email ?? ""
     }
 
     var userName: String {
-        return userModel.userName
+        return userModel.userName ?? ""
     }
 }

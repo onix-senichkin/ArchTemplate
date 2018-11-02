@@ -35,6 +35,8 @@ class AuthFlowCoordinator {
         
         let coordinator = SignInCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
         coordinator.start()
+        //registrationFlowCoordinator = RegistrationFlowCoordinator(navigationController: rootNav, transitions: self, serviceHolder: serviceHolder)
+        //registrationFlowCoordinator?.start()
         
         window.rootViewController = rootNav
         window.makeKeyAndVisible()
@@ -45,7 +47,7 @@ class AuthFlowCoordinator {
     }
 }
 
-extension AuthFlowCoordinator: SignInCoordinatorTransitions {
+extension AuthFlowCoordinator: SignInCoordinatorTransitions, RegistrationFlowCoordinatorTransitions {
     
     func userDidLogin() {
         transitions?.userDidLogin()
@@ -56,8 +58,3 @@ extension AuthFlowCoordinator: SignInCoordinatorTransitions {
         registrationFlowCoordinator?.start()
     }
 }
-
-extension AuthFlowCoordinator: RegistrationFlowCoordinatorTransitions {
-    
-}
-

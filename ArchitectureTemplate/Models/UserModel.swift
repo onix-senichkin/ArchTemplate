@@ -10,6 +10,9 @@ import Foundation
 
 struct UserModel: Decodable {
     
-    var email: String
-    var userName: String
+    var email: String?
+    var userName: String?
+    
+    init() {
+    }
 }

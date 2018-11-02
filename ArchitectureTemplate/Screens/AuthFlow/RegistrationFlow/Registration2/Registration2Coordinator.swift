@@ -9,9 +9,14 @@
 import UIKit
 
 protocol Registration2CoordinatorTransitions: class {
+    
+    func userWasCreated()
 }
 
-protocol Registration2CoordinatorType {
+protocol Registration2CoordinatorType: BaseRegistrationCoordinatorProtocol {
+    
+    //actions
+    func backClicked()
 }
 
 class Registration2Coordinator: Registration2CoordinatorType {
@@ -21,12 +26,12 @@ class Registration2Coordinator: Registration2CoordinatorType {
     private weak var controller = Storyboard.auth.controller(withClass: Registration2VC.self)
     private var serviceHolder: ServiceHolder
     
-    init(navigationController: UINavigationController?, transitions: Registration2CoordinatorTransitions?, serviceHolder: ServiceHolder, newUserModel: SignUpUserModel) {
+    init(navigationController: UINavigationController?, transitions: Registration2CoordinatorTransitions?, serviceHolder: ServiceHolder, newUser: SignUpUserViewModel) {
         self.navigationController = navigationController
         self.transitions = transitions
         self.serviceHolder = serviceHolder
         
-        controller?.viewModel = Registration2ViewModel(self, serviceHolder: serviceHolder, newUserModel: newUserModel)
+        controller?.viewModel = Registration2ViewModel(self, serviceHolder: serviceHolder, newUser: newUser)
     }
     
     func start() {
@@ -39,4 +44,13 @@ class Registration2Coordinator: Registration2CoordinatorType {
         print("Registration2Coordinator - deinit")
     }
     
+    //actions
+    func backClicked() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func nextClicked() {
+        transitions?.userWasCreated()
+    }
+
 }

@@ -51,3 +51,35 @@ extension UIView {
         return nibView
     }
 }
+
+//MARK: Frame routine
+extension UIView {
+    
+    var width: CGFloat {
+        return self.frame.size.width
+    }
+    
+    var height: CGFloat {
+        return self.frame.size.height
+    }
+    
+    var top: CGFloat {
+        return self.frame.origin.y
+    }
+    
+    var bottom: CGFloat {
+        return self.frame.origin.y + self.frame.size.height
+    }
+    
+    var left: CGFloat {
+        return self.frame.origin.x
+    }
+    
+    var rigth: CGFloat {
+        return self.frame.origin.x + self.frame.size.width
+    }
+    
+    var size: CGSize {
+        return self.frame.size
+    }
+}

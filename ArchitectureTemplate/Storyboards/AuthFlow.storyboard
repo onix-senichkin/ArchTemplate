@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yKt-Xm-bSC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yKt-Xm-bSC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -218,11 +218,58 @@
                     <connections>
                         <outlet property="ivFooterView" destination="iV8-ri-TQ5" id="8dP-zG-w3T"/>
                         <outlet property="tableView" destination="hun-Sb-yev" id="1Gz-8S-cY4"/>
+                        <segue destination="OT8-um-jvD" kind="show" identifier="toStep2" id="Bfg-tQ-V0W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zmr-V9-pNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8.8000000000000007" y="466.41679160419795"/>
+        </scene>
+        <!--Registration2VC-->
+        <scene sceneID="jjX-pC-0IB">
+            <objects>
+                <viewController storyboardIdentifier="Registration2VC" id="OT8-um-jvD" customClass="Registration2VC" customModule="Template" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zbe-cx-MKB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9gJ-qY-QIJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="523"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="OT8-um-jvD" id="Mfi-h3-iFA"/>
+                                    <outlet property="delegate" destination="OT8-um-jvD" id="2bG-P9-T6u"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x6R-nr-Xzm" userLabel="Footer View" customClass="RegistrationFooter" customModule="Template" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="0C5-Sf-3eZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Co4-mU-33r" firstAttribute="trailing" secondItem="9gJ-qY-QIJ" secondAttribute="trailing" id="5lE-wh-6u3"/>
+                            <constraint firstItem="9gJ-qY-QIJ" firstAttribute="top" secondItem="Co4-mU-33r" secondAttribute="top" id="MGy-kg-TlP"/>
+                            <constraint firstItem="Co4-mU-33r" firstAttribute="bottom" secondItem="x6R-nr-Xzm" secondAttribute="bottom" id="OTa-84-3So"/>
+                            <constraint firstItem="9gJ-qY-QIJ" firstAttribute="bottom" secondItem="x6R-nr-Xzm" secondAttribute="top" id="gED-dd-t5M"/>
+                            <constraint firstItem="Co4-mU-33r" firstAttribute="trailing" secondItem="x6R-nr-Xzm" secondAttribute="trailing" id="l2U-yy-OLv"/>
+                            <constraint firstItem="9gJ-qY-QIJ" firstAttribute="leading" secondItem="Co4-mU-33r" secondAttribute="leading" id="lm1-7o-efG"/>
+                            <constraint firstItem="x6R-nr-Xzm" firstAttribute="leading" secondItem="Co4-mU-33r" secondAttribute="leading" id="whG-ZK-wg7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Co4-mU-33r"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uK1-17-XKh"/>
+                    <connections>
+                        <outlet property="ivFooterView" destination="x6R-nr-Xzm" id="JFU-Il-fGH"/>
+                        <outlet property="tableView" destination="9gJ-qY-QIJ" id="Tea-ML-zWU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yDb-hh-srr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="467"/>
         </scene>
     </scenes>
     <resources>
