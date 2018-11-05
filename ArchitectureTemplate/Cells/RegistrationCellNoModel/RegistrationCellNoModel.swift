@@ -8,31 +8,21 @@
 
 import UIKit
 
-enum RegistrationCellType: String {
-    case defaultType = ""
-    case email = "Email"
-    case firstName = "First Name"
-    case lastName = "Last Name"
-    case profession = "Profession"
-    case gender = "Gender"
-    case city = "City"
-    case address = "Address"
-    case phone = "Phone"
-}
-
-protocol RegistrationCellDelegate: class {
+protocol RegistrationCellDataDelegate: class {
     
-    func doneClicked(type: RegistrationCellType, value: String)
+    func valueChanged(for type: RegistrationCellType, value: String)
+    func validate(for type: RegistrationCellType) -> Bool
 }
 
-class RegistrationCell: UITableViewCell {
+class RegistrationCellNoModel: UITableViewCell {
 
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var tfInput: UITextField!
     
-    private weak var delegate: RegistrationCellDelegate?
+    private weak var actionDelegate: RegistrationCellDelegate?
+    private weak var dataDelegate: RegistrationCellDataDelegate?
+    
     private var cellType: RegistrationCellType = .defaultType
-    private weak var model: SignUpUserViewModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,10 +31,10 @@ class RegistrationCell: UITableViewCell {
         tfInput.returnKeyType = .next
     }
     
-    func customInit(type: RegistrationCellType, returnKeyType: UIReturnKeyType, model: SignUpUserViewModel, delegate: RegistrationCellDelegate?) {
-        self.delegate = delegate
+    func customInit(type: RegistrationCellType, returnKeyType: UIReturnKeyType, model: SignUpUserViewModel, delegate: RegistrationCellDelegate?, dataDelegate: RegistrationCellDataDelegate? = nil) {
+        self.actionDelegate = delegate
+        self.dataDelegate = dataDelegate
         self.cellType = type
-        self.model = model
         
         lbTitle.text = model.getTitleValue(for: type)
         tfInput.placeholder = model.getTitleValue(for: type)
@@ -57,8 +47,8 @@ class RegistrationCell: UITableViewCell {
     }
     
     func validate() {
-        guard let model = model else { return }
-        let validated = model.validate(for: cellType)
+        guard let dataDelegate = dataDelegate else { return }
+        let validated = dataDelegate.validate(for: cellType)
         if validated {
             tfInput.layer.borderColor = UIColor.clear.cgColor
             tfInput.layer.borderWidth = 0
@@ -69,11 +59,11 @@ class RegistrationCell: UITableViewCell {
     }
 }
 
-extension RegistrationCell: UITextFieldDelegate {
+extension RegistrationCellNoModel: UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         let value = textField.text ?? ""
-        model?.valueChanged(for: cellType, value: value)
+        dataDelegate?.valueChanged(for: cellType, value: value)
         self.validate()
 
         return true
@@ -81,10 +71,10 @@ extension RegistrationCell: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let value = textField.text ?? ""
-        model?.valueChanged(for: cellType, value: value)
+        dataDelegate?.valueChanged(for: cellType, value: value)
         self.validate()
         
-        delegate?.doneClicked(type: cellType, value: value)
+        actionDelegate?.doneClicked(type: cellType, value: value)
         return true
     }
 }

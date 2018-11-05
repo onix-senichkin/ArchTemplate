@@ -41,7 +41,7 @@ class UserLocationService: NSObject, UserLocationServiceType {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
                 self?.locationManager?.requestWhenInUseAuthorization()
             }
-        } else {
+        } else if status != .denied && status != .restricted {
             locationManager?.startUpdatingLocation()
         }
     }

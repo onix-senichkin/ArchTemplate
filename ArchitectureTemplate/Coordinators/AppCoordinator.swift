@@ -112,8 +112,6 @@ extension AppCoordinator: TabBarCoordinatorTransitions {
         userService.logout()
         
         cleanServices()
-        startOtherServices()
-        
         startPreloginFlow()
     }
 }

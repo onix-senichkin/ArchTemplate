@@ -31,7 +31,7 @@ class SignUpUserViewModel: NSObject {
                 return model.lastName
             case .profession:
                 return model.profession
-            case .genger:
+            case .gender:
                 return model.gender
             case .city:
                 return model.city
@@ -54,7 +54,7 @@ class SignUpUserViewModel: NSObject {
                 model.lastName = value
             case .profession:
                 model.profession = value
-            case .genger:
+            case .gender:
                 model.gender = value
             case .city:
                 model.city = value
@@ -82,7 +82,7 @@ class SignUpUserViewModel: NSObject {
             case .profession:
                 let value = model.profession ?? ""
                 return (value.count > 0)
-            case .genger:
+            case .gender:
                 let value = model.gender ?? ""
                 return (value.count > 0)
             case .city:
