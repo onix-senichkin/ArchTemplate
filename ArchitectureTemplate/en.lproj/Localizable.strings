@@ -1,0 +1,60 @@
+/* 
+  Localizable.strings
+  ArchitectureTemplate
+
+  Created by Denis Senichkin on 11/6/18.
+  Copyright © 2018 Denis Senichkin. All rights reserved.
+*/
+
+//Common
+"Common.ErrorTitle" = "Error";
+"Common.OK" = "OK";
+"Common.Error" = "Error occurred. Please try again.";
+"Common.Back" = "Back";
+"Common.Next" = "Next";
+"Common.Cancel" = "Cancel";
+"Common.Done" = "Done";
+"Common.ErrorParseDataFromServer" = "Can't parse data from server";
+"Common.ErrorParseDataFromBundle" = "Can't load data from bundle";
+"Common.Email" = "Email";
+"Common.Password" = "Password";
+"Common.Add" = "Add";
+"Common.Remove" = "Remove";
+
+//Sign In
+"Signin.SigninTitle" = "Sign In";
+"Signin.SignupTitle" = "No Account Yet? Sign Up!";
+"Signin.EmailBlankError" = "Email can't be blank";
+"Signin.PassBlankError" = "Password can't be blank";
+"Signin.PassWeakError" = "Password should be 8+ symbols";
+
+//Registration
+"RegistrationCell.Email" = "Email";
+"RegistrationCell.First" = "First Name";
+"RegistrationCell.Last" = "Last Name";
+"RegistrationCell.Prof" = "Profession";
+"RegistrationCell.Gender" = "Gender";
+"RegistrationCell.City" = "City";
+"RegistrationCell.Address" = "Address";
+"RegistrationCell.Phone" = "Phone";
+
+//SignUp Step1
+"SignUpStep1.Title" = "Step1";
+
+//SignUp Step2
+"SignUpStep2.Title" = "Step2";
+
+//News
+"News.Title" = "News";
+
+//Full info
+"FullNew.Title" = "New full info";
+
+//Reading list
+"Reading.Title" = "Reading List";
+
+//Profile
+"Profile.Title" = "Profile";
+"Profile.Name" = "Name";
+"Profile.Logout" = "Logout";
+

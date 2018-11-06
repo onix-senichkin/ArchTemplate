@@ -1,0 +1,14 @@
+/* 
+  InfoPlist.strings
+  ArchitectureTemplate
+
+  Created by Denis Senichkin on 11/6/18.
+  Copyright © 2018 Denis Senichkin. All rights reserved.
+*/
+
+CFBundleDisplayName = "Der Vorlage";
+//NSCameraUsageDescription = "This app need camera for the user's ability to create an avatar.";
+//NSPhotoLibraryUsageDescription = "This app need photoalbum for the user's ability to create an avatar.";
+NSLocationWhenInUseUsageDescription = "Anwendung benötigen Ihren Standort.";
+NSRemindersUsageDescription = "";
+UILaunchStoryboardName = "LaunchScreen";

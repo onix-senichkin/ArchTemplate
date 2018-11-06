@@ -10,14 +10,14 @@ import UIKit
 
 enum RegistrationCellType: String {
     case defaultType = ""
-    case email = "Email"
-    case firstName = "First Name"
-    case lastName = "Last Name"
-    case profession = "Profession"
-    case gender = "Gender"
-    case city = "City"
-    case address = "Address"
-    case phone = "Phone"
+    case email = "RegistrationCell.Email"
+    case firstName = "RegistrationCell.First"
+    case lastName = "RegistrationCell.Last"
+    case profession = "RegistrationCell.Prof"
+    case gender = "RegistrationCell.Gender"
+    case city = "RegistrationCell.City"
+    case address = "RegistrationCell.Address"
+    case phone = "RegistrationCell.Phone"
 }
 
 protocol RegistrationCellDelegate: class {

@@ -30,6 +30,7 @@ class NewsListVC2: UIViewController {
         super.viewDidLoad()
         
         setup()
+        localize()
         getNewsItems()
     }
     
@@ -40,8 +41,11 @@ class NewsListVC2: UIViewController {
     }
     
     private func setup() {
-        self.navigationItem.title = "News2"
         viewModel.registerCells(for: collectionView)
+    }
+    
+    private func localize() {
+        self.navigationItem.title = "News.Title".localized
     }
     
     private func getNewsItems() {

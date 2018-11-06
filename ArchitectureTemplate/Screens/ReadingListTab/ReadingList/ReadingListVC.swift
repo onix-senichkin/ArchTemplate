@@ -27,7 +27,7 @@ class ReadingListVC: UITableViewController {
     }
     
     private func setup() {
-        self.navigationItem.title = "Reading List"
+        self.navigationItem.title = "Reading.Title".localized
         viewModel.registerCells(for: tableView)
         tableView.tableFooterView = UIView()
     }

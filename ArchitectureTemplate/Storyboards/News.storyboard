@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Imi-6T-7yI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Imi-6T-7yI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--{Title}-->
         <scene sceneID="3Dh-by-S06">
             <objects>
                 <viewController storyboardIdentifier="NewsListVC2" id="qtX-CL-XKL" customClass="NewsListVC2" customModule="Template" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,7 +43,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pjo-Oa-rFX"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="nqu-GH-hPy"/>
+                    <navigationItem key="navigationItem" title="{Title}" id="nqu-GH-hPy"/>
                     <connections>
                         <outlet property="collectionView" destination="wqK-eb-9g7" id="zDv-z9-czD"/>
                         <segue destination="c7n-Su-pyV" kind="show" identifier="toDetails" id="OjG-Vc-2Rl"/>
@@ -116,7 +116,7 @@
             </objects>
             <point key="canvasLocation" x="447" y="486"/>
         </scene>
-        <!--Title-->
+        <!--{Title}-->
         <scene sceneID="rxY-47-kv6">
             <objects>
                 <viewController storyboardIdentifier="NewsListVC" id="7k9-sS-N88" customClass="NewsListVC" customModule="Template" customModuleProvider="target" sceneMemberID="viewController">
@@ -143,7 +143,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="USy-Y7-VKE"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="mKj-zJ-9Xq"/>
+                    <navigationItem key="navigationItem" title="{Title}" id="mKj-zJ-9Xq"/>
                     <connections>
                         <outlet property="tableView" destination="sZm-Ja-8Ks" id="EH4-9j-DJa"/>
                         <segue destination="c7n-Su-pyV" kind="show" identifier="toDetails" id="nJe-ca-Krq"/>
@@ -191,6 +191,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nJe-ca-Krq"/>
+        <segue reference="OjG-Vc-2Rl"/>
     </inferredMetricsTieBreakers>
 </document>

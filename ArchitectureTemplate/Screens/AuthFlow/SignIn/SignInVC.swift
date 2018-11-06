@@ -14,6 +14,8 @@ class SignInVC: UITableViewController {
     
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
+    @IBOutlet weak var btnSignIn: UIButton!
+    @IBOutlet weak var btnSignUp: UIButton!
     
     deinit {
         print("SignInVC - deinit")
@@ -23,6 +25,7 @@ class SignInVC: UITableViewController {
         super.viewDidLoad()
         
         settupUI()
+        localize()
     }
     
     private func settupUI() {
@@ -33,6 +36,13 @@ class SignInVC: UITableViewController {
             tfEmail.text = "john.doe@gmail.com"
             tfPassword.text = "qwert1234"
         }
+    }
+    
+    private func localize() {
+        tfEmail.placeholder = "Common.Email".localized
+        tfPassword.placeholder = "Common.Password".localized
+        btnSignIn.setTitle("Signin.SigninTitle".localized, for: .normal)
+        btnSignUp.setAttributedTitle(viewModel.signUpTitle, for: .normal)
     }
 }
 

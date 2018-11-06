@@ -23,6 +23,7 @@ class Registration1VC: BaseKeyboardAvoidVC {
         super.viewDidLoad()
         
         setup()
+        localize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,7 +38,6 @@ class Registration1VC: BaseKeyboardAvoidVC {
 
     private func setup() {
         self.view.backgroundColor = RGBColor(230, 230, 230)
-        self.navigationItem.title = "Step 1"
         
         fBottomOffset = ivFooterView.height // for keyboard offset logic
         viewModel.registerCells(for: tableView)
@@ -47,6 +47,10 @@ class Registration1VC: BaseKeyboardAvoidVC {
         tableView.reloadData()
         
         ivFooterView.customSetup(delegate: self)
+    }
+    
+    private func localize() {
+        self.navigationItem.title = "SignUpStep1.Title".localized
     }
 }
 

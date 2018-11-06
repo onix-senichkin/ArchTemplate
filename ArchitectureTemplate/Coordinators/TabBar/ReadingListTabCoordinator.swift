@@ -15,7 +15,7 @@ protocol ReadingListTabCoordinatorTransitions: class {
 class ReadingListTabCoordinator: TabBarItemCoordinatorType {
 
     let rootController = UINavigationController()
-    let tabBarItem: UITabBarItem = UITabBarItem(title: "Reading list", image: UIImage(named: "icReadingList"), selectedImage: nil)
+    let tabBarItem: UITabBarItem = UITabBarItem(title: "Reading.Title".localized, image: UIImage(named: "icReadingList"), selectedImage: nil)
     private var serviceHolder: ServiceHolder
     private weak var transitions: ReadingListTabCoordinatorTransitions?
     

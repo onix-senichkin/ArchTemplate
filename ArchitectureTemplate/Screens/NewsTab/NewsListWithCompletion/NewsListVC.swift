@@ -22,6 +22,7 @@ class NewsListVC: UIViewController {
         super.viewDidLoad()
         
         setup()
+        localize()
         getNewsItems()
     }
     
@@ -31,11 +32,14 @@ class NewsListVC: UIViewController {
     }
     
     private func setup() {
-        self.navigationItem.title = "News1"
         viewModel.registerCells(for: tableView)
         tableView.tableFooterView = UIView()
     }
     
+    private func localize() {
+        self.navigationItem.title = "News.Title".localized
+    }
+
     private func getNewsItems() {
         viewModel.getNews(sBlock: { [weak self] in
             self?.tableView.reloadData()

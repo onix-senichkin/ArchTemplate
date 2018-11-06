@@ -8,8 +8,8 @@
 
 import UIKit
 
-private let kBackTitle = "Back"
-private let kNextTitle = "Next"
+private let kBackTitle = "Common.Back".localized
+private let kNextTitle = "Common.Next".localized
 
 protocol RegistrationFooterDelegate: class {
     
@@ -42,8 +42,8 @@ class RegistrationFooter: UIView {
     
     func customSetup(delegate: RegistrationFooterDelegate?, backTitle: String? = kBackTitle, nextTitle: String? = kNextTitle) {
         self.delegate = delegate
-        self.btnBack.setTitle(backTitle, for: .normal)
-        self.btnNext.setTitle(nextTitle, for: .normal)
+        self.btnBack.setTitle(backTitle?.localized, for: .normal)
+        self.btnNext.setTitle(nextTitle?.localized, for: .normal)
     }
 }
 

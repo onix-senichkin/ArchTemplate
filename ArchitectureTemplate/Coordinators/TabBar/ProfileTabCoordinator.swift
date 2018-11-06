@@ -16,7 +16,7 @@ protocol ProfileTabCoordinatorTransitions: class {
 class ProfileTabCoordinator: TabBarItemCoordinatorType {
 
     let rootController = UINavigationController()
-    let tabBarItem: UITabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "icProfile"), selectedImage: nil)
+    let tabBarItem: UITabBarItem = UITabBarItem(title: "Profile.Title".localized, image: UIImage(named: "icProfile"), selectedImage: nil)
     private var serviceHolder: ServiceHolder
     private weak var transitions: ProfileTabCoordinatorTransitions?
     

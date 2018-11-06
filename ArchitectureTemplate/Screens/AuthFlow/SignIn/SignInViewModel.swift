@@ -7,8 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 protocol SignInViewModelType {
+    
+    //getters
+    var signUpTitle: NSAttributedString { get }
     
     //actions
     func validate(email: String, password: String) -> String?
@@ -32,19 +36,27 @@ class SignInViewModel: SignInViewModelType {
         print("SignInViewModel - deinit")
     }
     
+    //getters
+    var signUpTitle: NSAttributedString {
+        let underlineAttribute:[NSAttributedString.Key: Any] = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+                                                                NSAttributedString.Key.foregroundColor: UIColor.black]
+        let underlineAttributedString = NSAttributedString(string: "Signin.SignupTitle".localized, attributes: underlineAttribute)
+        return underlineAttributedString
+    }
+    
     //actions
     func validate(email: String, password: String) -> String? {
         //#TODO Should be replaced with validate regex and rules
         if email.count == 0 {
-            return "Email can't be blank"
+            return "Signin.EmailBlankError".localized
         }
         
         if password.count == 0 {
-            return "Password can't be blank"
+            return "Signin.PassBlankError".localized
         }
         
         if password.count < 8 {
-            return "Password should be 8+ symbols"
+            return "Signin.PassWeakError".localized
         }
 
         return nil

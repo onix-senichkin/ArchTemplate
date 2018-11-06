@@ -13,6 +13,11 @@ class ProfileVC: UITableViewController {
     
     var viewModel: ProfileViewModelType!
     
+    @IBOutlet weak var lbNameTitle: UILabel!
+    @IBOutlet weak var lbEmailTitle: UILabel!
+    @IBOutlet weak var lbAddressTitle: UILabel!
+    @IBOutlet weak var lbLogoutTitle: UILabel!
+    
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbEmail: UILabel!
     @IBOutlet weak var lbAddress: UILabel!
@@ -22,6 +27,7 @@ class ProfileVC: UITableViewController {
         super.viewDidLoad()
 
         setupUI()
+        localize()
     }
     
     deinit {
@@ -29,7 +35,6 @@ class ProfileVC: UITableViewController {
     }
     
     private func setupUI() {
-        self.title = "Profile"
         tableView.tableFooterView = UIView()
         lbName.text = viewModel.getUserName()
         lbEmail.text = viewModel.getUserEmail()
@@ -40,6 +45,14 @@ class ProfileVC: UITableViewController {
         viewModel.getUserAddress { [weak self] address in
             self?.lbAddress.text = address
         }
+    }
+    
+    private func localize() {
+        self.title = "Profile.Title".localized
+        lbNameTitle.text = "Profile.Name".localized + ":"
+        lbEmailTitle.text = "RegistrationCell.Email".localized + ":"
+        lbAddressTitle.text = "RegistrationCell.Address".localized + ":"
+        lbLogoutTitle.text = "Profile.Logout".localized
     }
 }
 

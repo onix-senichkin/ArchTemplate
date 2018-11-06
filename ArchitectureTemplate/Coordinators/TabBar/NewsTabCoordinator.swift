@@ -20,7 +20,7 @@ protocol NewsTabCoordinatorType {
 class NewsTabCoordinator: NewsTabCoordinatorType, TabBarItemCoordinatorType {
 
     let rootController = UINavigationController()
-    let tabBarItem: UITabBarItem = UITabBarItem(title: "News", image: UIImage(named: "icNews"), selectedImage: nil)
+    let tabBarItem: UITabBarItem = UITabBarItem(title: "News.Title".localized, image: UIImage(named: "icNews"), selectedImage: nil)
     private weak var transitions: NewsTabCoordinatorTransitions?
     private var serviceHolder: ServiceHolder
     private var featureListService: FeatureListService

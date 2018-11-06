@@ -40,7 +40,7 @@ class NewViewModel: NSObject {
     }
     
     var newInReadingListTitle: String {
-        let title = !newModel.inReadingList ? "Add" : "Remove"
+        let title = !newModel.inReadingList ? "Common.Add".localized : "Common.Remove".localized
         return title
     }
     

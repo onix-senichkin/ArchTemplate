@@ -23,13 +23,16 @@ class NewDetailsVC: UITableViewController {
         super.viewDidLoad()
         
         setupUI()
+        localize()
     }
     
     private func setupUI() {
-        self.title = "New full info"
-            
         self.lbTitle.text = viewModel.newTitle
         self.lbDetails.text = viewModel.newDesc
         self.tableView.tableFooterView = UIView()
+    }
+    
+    private func localize() {
+        self.title = "FullNew.Title".localized
     }
 }

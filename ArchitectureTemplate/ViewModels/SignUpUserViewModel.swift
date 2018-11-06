@@ -18,7 +18,7 @@ class SignUpUserViewModel: NSObject {
     
     //getters
     func getTitleValue(for type: RegistrationCellType) -> String {
-        return type.rawValue
+        return type.rawValue.localized
     }
 
     func getValue(for type: RegistrationCellType) -> String? {
