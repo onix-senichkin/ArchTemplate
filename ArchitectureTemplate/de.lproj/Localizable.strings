@@ -37,12 +37,18 @@
 "RegistrationCell.City" = "Ger City";
 "RegistrationCell.Address" = "Ger Address";
 "RegistrationCell.Phone" = "Ger Phone";
+"RegistrationCell.Color" = "Ger Favorite color";
+"RegistrationCell.Season" = "Ger Favorite season";
+
 
 //SignUp Step1
 "SignUpStep1.Title" = "Ger Step1";
 
 //SignUp Step2
 "SignUpStep2.Title" = "Ger Step2";
+
+//SignUp Step3
+"SignUpStep3.Title" = "Ger Step3";
 
 //News
 "News.Title" = "Ger News";

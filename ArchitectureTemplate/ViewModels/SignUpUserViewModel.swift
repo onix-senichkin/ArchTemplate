@@ -39,7 +39,11 @@ class SignUpUserViewModel: NSObject {
                 return model.address
             case .phone:
                 return model.phone
-            default: return ""
+            case .color:
+                return model.favoriteColor
+            case .season:
+                return model.favoriteSeason
+            default: return nil
         }
     }
 
@@ -62,6 +66,10 @@ class SignUpUserViewModel: NSObject {
                 model.address = value
             case .phone:
                 model.phone = value
+            case .color:
+                model.favoriteColor = value
+            case .season:
+                model.favoriteSeason = value
             default: break
         }
     }
@@ -94,6 +102,13 @@ class SignUpUserViewModel: NSObject {
             case .phone:
                 let value = model.phone ?? ""
                 return (value.count > 0)
+            case .color:
+                let value = model.favoriteColor ?? ""
+                return (value.count > 0)
+            case .season:
+                let value = model.favoriteSeason ?? ""
+                return (value.count > 0)
+
             default: break
         }
         

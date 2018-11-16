@@ -101,6 +101,7 @@ extension Registration2ViewModel {
         cell = tableView.dequeueReusableCell(withIdentifier: RegistrationCellNoModel.identifier, for: indexPath) as? RegistrationCellNoModel
         let cellDelegate = delegate as? RegistrationCellDelegate
         var newCellType:RegistrationCellType = .defaultType
+        var keyboardNextType:UIReturnKeyType = .next
         switch cellType {
             case .gender:
                 newCellType = .gender
@@ -110,9 +111,10 @@ extension Registration2ViewModel {
                 newCellType = .address
             case .phone:
                 newCellType = .phone
+                keyboardNextType = .done
         }
 
-        cell?.customInit(type: newCellType, returnKeyType: .done, model: newUser, delegate: cellDelegate, dataDelegate: self)
+        cell?.customInit(type: newCellType, returnKeyType: keyboardNextType, model: newUser, delegate: cellDelegate, dataDelegate: self)
         cell?.selectionStyle = .none
 
         //activate validate mode to cell

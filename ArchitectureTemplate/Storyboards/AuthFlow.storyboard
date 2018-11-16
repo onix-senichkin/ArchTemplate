@@ -268,11 +268,58 @@
                     <connections>
                         <outlet property="ivFooterView" destination="x6R-nr-Xzm" id="JFU-Il-fGH"/>
                         <outlet property="tableView" destination="9gJ-qY-QIJ" id="Tea-ML-zWU"/>
+                        <segue destination="1SR-Zz-X3t" kind="show" identifier="toStep3" id="oSg-gY-kxQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yDb-hh-srr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="774" y="467"/>
+        </scene>
+        <!--Registration3VC-->
+        <scene sceneID="nuv-4Q-GzP">
+            <objects>
+                <viewController storyboardIdentifier="Registration3VC" id="1SR-Zz-X3t" customClass="Registration3VC" customModule="Template" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WZc-B2-1KO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ghr-a1-9Me">
+                                <rect key="frame" x="0.0" y="64" width="375" height="523"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="1SR-Zz-X3t" id="73g-1s-pTb"/>
+                                    <outlet property="delegate" destination="1SR-Zz-X3t" id="Knd-rg-eGi"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCZ-v3-MF2" userLabel="Footer View" customClass="RegistrationFooter" customModule="Template" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="PPa-wM-YVr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ghr-a1-9Me" firstAttribute="bottom" secondItem="lCZ-v3-MF2" secondAttribute="top" id="5Ya-HO-hM3"/>
+                            <constraint firstItem="Ghr-a1-9Me" firstAttribute="top" secondItem="zby-T3-3Mi" secondAttribute="top" id="5hs-a8-uTQ"/>
+                            <constraint firstItem="Ghr-a1-9Me" firstAttribute="leading" secondItem="zby-T3-3Mi" secondAttribute="leading" id="ALq-MM-4Eu"/>
+                            <constraint firstItem="zby-T3-3Mi" firstAttribute="trailing" secondItem="Ghr-a1-9Me" secondAttribute="trailing" id="S1S-eA-PZF"/>
+                            <constraint firstItem="zby-T3-3Mi" firstAttribute="trailing" secondItem="lCZ-v3-MF2" secondAttribute="trailing" id="SUh-sY-wrO"/>
+                            <constraint firstItem="lCZ-v3-MF2" firstAttribute="leading" secondItem="zby-T3-3Mi" secondAttribute="leading" id="Uk8-i5-hc9"/>
+                            <constraint firstItem="zby-T3-3Mi" firstAttribute="bottom" secondItem="lCZ-v3-MF2" secondAttribute="bottom" id="zuU-J0-CPQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zby-T3-3Mi"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="XpB-eU-jNm"/>
+                    <connections>
+                        <outlet property="ivFooterView" destination="lCZ-v3-MF2" id="6y3-wl-5Nt"/>
+                        <outlet property="tableView" destination="Ghr-a1-9Me" id="4zP-St-4ZG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y4v-1F-eH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1529" y="466"/>
         </scene>
     </scenes>
     <resources>

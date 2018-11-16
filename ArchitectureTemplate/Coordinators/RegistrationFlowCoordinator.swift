@@ -46,7 +46,7 @@ class RegistrationFlowCoordinator {
     }
 }
 
-extension RegistrationFlowCoordinator: Registration1CoordinatorTransitions {
+extension RegistrationFlowCoordinator: Registration1CoordinatorTransitions, Registration2CoordinatorTransitions, Registration3CoordinatorTransitions {
     
     func nextClicked(_ from: BaseRegistrationCoordinatorProtocol) {
         print("nextClicked \(from)")
@@ -55,12 +55,10 @@ extension RegistrationFlowCoordinator: Registration1CoordinatorTransitions {
             let coordinator = Registration2Coordinator(navigationController: navigationController, transitions: self, serviceHolder: serviceHolder, newUser: newUser)
             coordinator.start()
         } else if from is Registration2Coordinator {
-            
+            let coordinator = Registration3Coordinator(navigationController: navigationController, transitions: self, serviceHolder: serviceHolder, newUser: newUser)
+            coordinator.start()
         }
     }
-}
-
-extension RegistrationFlowCoordinator: Registration2CoordinatorTransitions {
     
     func userWasCreated() {
         transitions?.userDidLogin()

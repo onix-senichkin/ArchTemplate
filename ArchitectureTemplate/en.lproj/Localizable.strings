@@ -37,12 +37,17 @@
 "RegistrationCell.City" = "City";
 "RegistrationCell.Address" = "Address";
 "RegistrationCell.Phone" = "Phone";
+"RegistrationCell.Color" = "Favorite color";
+"RegistrationCell.Season" = "Favorite season";
 
 //SignUp Step1
 "SignUpStep1.Title" = "Step1";
 
 //SignUp Step2
 "SignUpStep2.Title" = "Step2";
+
+//SignUp Step3
+"SignUpStep3.Title" = "Step3";
 
 //News
 "News.Title" = "News";

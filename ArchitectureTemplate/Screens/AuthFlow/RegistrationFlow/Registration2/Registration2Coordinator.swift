@@ -10,7 +10,7 @@ import UIKit
 
 protocol Registration2CoordinatorTransitions: class {
     
-    func userWasCreated()
+    func nextClicked(_ from: BaseRegistrationCoordinatorProtocol)
 }
 
 protocol Registration2CoordinatorType: BaseRegistrationCoordinatorProtocol {
@@ -50,7 +50,7 @@ class Registration2Coordinator: Registration2CoordinatorType {
     }
     
     func nextClicked() {
-        transitions?.userWasCreated()
+        transitions?.nextClicked(self)
     }
 
 }

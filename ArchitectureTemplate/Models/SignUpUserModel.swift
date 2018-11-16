@@ -18,4 +18,6 @@ class SignUpUserModel {
     var city: String?
     var address: String?
     var phone:String?
+    var favoriteColor: String?
+    var favoriteSeason: String?
 }

@@ -50,6 +50,10 @@
 		7C880E212188B5010030350B /* NewDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C880E1E2188B5010030350B /* NewDetailsCoordinator.swift */; };
 		7C880E222188B5010030350B /* NewDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C880E1F2188B5010030350B /* NewDetailsVC.swift */; };
 		7C9D91B12187455300B5024D /* UserLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D91B02187455300B5024D /* UserLocationService.swift */; };
+		7CA85C7F219F0E78009ED040 /* Registration3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA85C7C219F0E78009ED040 /* Registration3VC.swift */; };
+		7CA85C80219F0E78009ED040 /* Registration3ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA85C7D219F0E78009ED040 /* Registration3ViewModel.swift */; };
+		7CA85C81219F0E78009ED040 /* Registration3Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA85C7E219F0E78009ED040 /* Registration3Coordinator.swift */; };
+		7CA85C84219F1172009ED040 /* RegistrationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA85C83219F1172009ED040 /* RegistrationDataSource.swift */; };
 		7CAD5D682190A1600028237B /* RegistrationCellNoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAD5D662190A1600028237B /* RegistrationCellNoModel.swift */; };
 		7CAD5D6B2190A1D00028237B /* RegistrationCellNoModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CAD5D6A2190A1D00028237B /* RegistrationCellNoModel.xib */; };
 		7CBE76C521806D4400900833 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBE76C421806D4400900833 /* AppDelegate.swift */; };
@@ -135,6 +139,10 @@
 		7C880E1E2188B5010030350B /* NewDetailsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDetailsCoordinator.swift; sourceTree = "<group>"; };
 		7C880E1F2188B5010030350B /* NewDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDetailsVC.swift; sourceTree = "<group>"; };
 		7C9D91B02187455300B5024D /* UserLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationService.swift; sourceTree = "<group>"; };
+		7CA85C7C219F0E78009ED040 /* Registration3VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registration3VC.swift; sourceTree = "<group>"; };
+		7CA85C7D219F0E78009ED040 /* Registration3ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registration3ViewModel.swift; sourceTree = "<group>"; };
+		7CA85C7E219F0E78009ED040 /* Registration3Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registration3Coordinator.swift; sourceTree = "<group>"; };
+		7CA85C83219F1172009ED040 /* RegistrationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDataSource.swift; sourceTree = "<group>"; };
 		7CAD5D662190A1600028237B /* RegistrationCellNoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationCellNoModel.swift; sourceTree = "<group>"; };
 		7CAD5D6A2190A1D00028237B /* RegistrationCellNoModel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistrationCellNoModel.xib; sourceTree = "<group>"; };
 		7CBE76C121806D4400900833 /* Template.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Template.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -310,6 +318,25 @@
 				7C880E1F2188B5010030350B /* NewDetailsVC.swift */,
 			);
 			path = NewDetails;
+			sourceTree = "<group>";
+		};
+		7CA85C7B219F0E78009ED040 /* Registration3 */ = {
+			isa = PBXGroup;
+			children = (
+				7CA85C82219F1154009ED040 /* DataSource */,
+				7CA85C7C219F0E78009ED040 /* Registration3VC.swift */,
+				7CA85C7D219F0E78009ED040 /* Registration3ViewModel.swift */,
+				7CA85C7E219F0E78009ED040 /* Registration3Coordinator.swift */,
+			);
+			path = Registration3;
+			sourceTree = "<group>";
+		};
+		7CA85C82219F1154009ED040 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				7CA85C83219F1172009ED040 /* RegistrationDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		7CAD5D652190A1600028237B /* RegistrationCellNoModel */ = {
@@ -496,6 +523,7 @@
 			children = (
 				7CD8B462218CAC110017547F /* Registration1 */,
 				7CC7BD97218B4D2D00391AAF /* Registration2 */,
+				7CA85C7B219F0E78009ED040 /* Registration3 */,
 			);
 			path = RegistrationFlow;
 			sourceTree = "<group>";
@@ -721,6 +749,8 @@
 				6B709CD92181041B00FBE4CC /* ReadingListViewModel.swift in Sources */,
 				7C880E222188B5010030350B /* NewDetailsVC.swift in Sources */,
 				7CD6965D21807BFD00A6830D /* SignInViewModel.swift in Sources */,
+				7CA85C80219F0E78009ED040 /* Registration3ViewModel.swift in Sources */,
+				7CA85C81219F0E78009ED040 /* Registration3Coordinator.swift in Sources */,
 				6B709CBE2180C44100FBE4CC /* UserModel.swift in Sources */,
 				6B709CB72180BE6D00FBE4CC /* BaseRequest.swift in Sources */,
 				7CC7BDA9218B647800391AAF /* SignUpUserViewModel.swift in Sources */,
@@ -748,12 +778,14 @@
 				6B709CCA2180EFAB00FBE4CC /* NewsTabCoordinator.swift in Sources */,
 				7C7B8EFD2189DF5D00E2CFF0 /* NewCollectionCell.swift in Sources */,
 				7CAD5D682190A1600028237B /* RegistrationCellNoModel.swift in Sources */,
+				7CA85C7F219F0E78009ED040 /* Registration3VC.swift in Sources */,
 				7CBE76E421806FFF00900833 /* ServiceHolder.swift in Sources */,
 				7CC7BD88218B4BCE00391AAF /* SignUpUserModel.swift in Sources */,
 				7C0FF45B21821D130064033D /* NewModel.swift in Sources */,
 				6B709CC02180C47E00FBE4CC /* UserViewModel.swift in Sources */,
 				7C43A86A218220F7002BE368 /* NewViewModel.swift in Sources */,
 				6B709CBC2180BE6D00FBE4CC /* RequestManager.swift in Sources */,
+				7CA85C84219F1172009ED040 /* RegistrationDataSource.swift in Sources */,
 				7CD8B468218CAC120017547F /* Registration1ViewModel.swift in Sources */,
 				6B709CC42180CF7000FBE4CC /* DecodingError.swift in Sources */,
 				7CC7BD7F218B459B00391AAF /* RegistrationFlowCoordinator.swift in Sources */,

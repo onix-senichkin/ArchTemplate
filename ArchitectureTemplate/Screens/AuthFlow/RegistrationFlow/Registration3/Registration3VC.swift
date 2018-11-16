@@ -1,5 +1,5 @@
 //
-//  Registration2VC.swift
+//  Registration3VC.swift
 //  ArchitectureTemplate
 //
 //  Created by Denis Senichkin on 11/1/18.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class Registration2VC: BaseKeyboardAvoidVC {
+class Registration3VC: BaseKeyboardAvoidVC {
     
-    var viewModel: Registration2ViewModelType!
+    var viewModel: Registration3ViewModelType!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var ivFooterView: RegistrationFooter!
     
     deinit {
-        print("Registration2VC - deinit")
+        print("Registration3VC - deinit")
     }
     
     override func viewDidLoad() {
@@ -50,13 +50,13 @@ class Registration2VC: BaseKeyboardAvoidVC {
     }
     
     private func localize() {
-        self.navigationItem.title = "SignUpStep2.Title".localized
+        self.navigationItem.title = "SignUpStep3.Title".localized
     }
 
 }
 
 //MARK:- UITableViewDataSource
-extension Registration2VC: UITableViewDataSource {
+extension Registration3VC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.getNumberOfRows()
@@ -73,7 +73,7 @@ extension Registration2VC: UITableViewDataSource {
 }
 
 //MARK:- UITableViewDataSource
-extension Registration2VC: UITableViewDelegate {
+extension Registration3VC: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
@@ -82,7 +82,7 @@ extension Registration2VC: UITableViewDelegate {
 }
 
 //MARK:- RegistrationCellDelegate
-extension Registration2VC: RegistrationCellDelegate {
+extension Registration3VC: RegistrationCellDelegate {
     
     func doneClicked(type: RegistrationCellType, value: String) {
         
@@ -93,7 +93,7 @@ extension Registration2VC: RegistrationCellDelegate {
             cell.becomeFirstResponder()
         }
        
-        if type == .phone {
+        if type == .season {
             self.view.endEditing(true)
             let indexPath = IndexPath(row: 0, section: 0)
             tableView.scrollToRow(at: indexPath, at: .top, animated: true)
@@ -102,7 +102,7 @@ extension Registration2VC: RegistrationCellDelegate {
 }
 
 //MARK:- RegistrationFooterDelegate
-extension Registration2VC: RegistrationFooterDelegate {
+extension Registration3VC: RegistrationFooterDelegate {
     
     func backClicked() {
         viewModel.backClicked()
@@ -113,7 +113,18 @@ extension Registration2VC: RegistrationFooterDelegate {
         if !validated {
             tableView.reloadData()
         } else {
-            viewModel.nextClicked()
+            createUser()
+        }
+    }
+    
+    private func createUser() {
+        viewModel.createUser { [weak self] errorStr in
+            if let errorStr = errorStr {
+                AlertHelper.showAlert(errorStr)
+                return
+            }
+            
+            self?.viewModel.nextClicked()
         }
     }
 }
