@@ -10,4 +10,5 @@ target 'ArchitectureTemplate' do
   pod 'AlamofireImage'
   pod 'MBProgressHUD'
 
+
 end

@@ -45,9 +45,29 @@ class AppCoordinator {
         
         authCoordinator = nil
     }
+}
+
+//MARK:- AuthFlowCoordinator Transitions
+extension AppCoordinator: AuthFlowCoordinatorTransitions {
     
-    deinit {
-        print("AppCoordinator - deinit")
+    func userDidLogin() {
+        enterApp()
+    }
+}
+
+//MARK:- TabBarCoordinator Transitions
+extension AppCoordinator: TabBarCoordinatorTransitions {
+    
+    func logout() {
+        
+        //clean up from prev user
+        let userService = serviceHolder.get(by: UserService.self)
+        let deepLinkService:DeepLinkManagerType = serviceHolder.get(by: DeepLinkManager.self)
+        deepLinkService.clearSavedLink()
+        userService.logout()
+        
+        cleanServices()
+        startPreloginFlow()
     }
 }
 
@@ -89,30 +109,6 @@ extension AppCoordinator {
     
     func getTabBarCoordinator() -> TabBarCoordinator? {
         return tabBarCoordinator
-    }
-}
-
-//MARK:- AuthFlowCoordinator Transitions
-extension AppCoordinator: AuthFlowCoordinatorTransitions {
-
-    func userDidLogin() {
-        enterApp()
-    }
-}
-
-//MARK:- TabBarCoordinator Transitions
-extension AppCoordinator: TabBarCoordinatorTransitions {
-    
-    func logout() {
-
-        //clean up from prev user
-        let userService = serviceHolder.get(by: UserService.self)
-        let deepLinkService:DeepLinkManagerType = serviceHolder.get(by: DeepLinkManager.self)
-        deepLinkService.clearSavedLink()
-        userService.logout()
-        
-        cleanServices()
-        startPreloginFlow()
     }
 }
 
