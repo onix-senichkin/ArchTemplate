@@ -1,0 +1,66 @@
+/* 
+  Localizable.strings
+  ArchitectureTemplate
+
+  Created by Denis Senichkin on 11/6/18.
+  Copyright © 2018 Denis Senichkin. All rights reserved.
+*/
+
+//Common
+"Common.ErrorTitle" = "Ger Error";
+"Common.OK" = "Ger OK";
+"Common.Error" = "Ger Error occurred. Please try again.";
+"Common.Back" = "Ger Back";
+"Common.Next" = "Ger Next";
+"Common.Cancel" = "Ger Cancel";
+"Common.Done" = "Ger Done";
+"Common.ErrorParseDataFromServer" = "Ger Can't parse data from server";
+"Common.ErrorParseDataFromBundle" = "Ger Can't load data from bundle";
+"Common.Email" = "Ger Email";
+"Common.Password" = "Ger Password";
+"Common.Add" = "Ger Add";
+"Common.Remove" = "Ger Remove";
+
+//Sign In
+"Signin.SigninTitle" = "Ger Sign In";
+"Signin.SignupTitle" = "Ger No Account Yet? Sign Up!";
+"Signin.EmailBlankError" = "Ger Email can't be blank";
+"Signin.PassBlankError" = "Ger Password can't be blank";
+"Signin.PassWeakError" = "Ger Password should be 8+ symbols";
+
+//Registration
+"RegistrationCell.Email" = "Ger Email";
+"RegistrationCell.First" = "Ger First Name";
+"RegistrationCell.Last" = "Ger Last Name";
+"RegistrationCell.Prof" = "Ger Profession";
+"RegistrationCell.Gender" = "Ger Gender";
+"RegistrationCell.City" = "Ger City";
+"RegistrationCell.Address" = "Ger Address";
+"RegistrationCell.Phone" = "Ger Phone";
+"RegistrationCell.Color" = "Ger Favorite color";
+"RegistrationCell.Season" = "Ger Favorite season";
+
+
+//SignUp Step1
+"SignUpStep1.Title" = "Ger Step1";
+
+//SignUp Step2
+"SignUpStep2.Title" = "Ger Step2";
+
+//SignUp Step3
+"SignUpStep3.Title" = "Ger Step3";
+
+//News
+"News.Title" = "Ger News";
+
+//Full info
+"FullNew.Title" = "Ger New full info";
+
+//Reading list
+"Reading.Title" = "Ger Reading List";
+
+//Profile
+"Profile.Title" = "Ger Profile";
+"Profile.Name" = "Ger Name";
+"Profile.Logout" = "Ger Logout";
+
