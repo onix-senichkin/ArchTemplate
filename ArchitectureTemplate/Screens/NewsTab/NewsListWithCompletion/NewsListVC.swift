@@ -11,7 +11,9 @@ import UIKit
 class NewsListVC: UIViewController {
     
     var viewModel: NewsListViewModel!
-    
+
+    @IBOutlet weak var lbTitle: UILabel!
+    @IBOutlet weak var lbSubtitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     deinit {
@@ -45,11 +47,17 @@ class NewsListVC: UIViewController {
     }
 
     private func getNewsItems() {
-        viewModel.getNews(sBlock: { [weak self] in
-            self?.tableView.reloadData()
+        viewModel.getNewsAsync(sBlock: { [weak self] in
+            self?.updateUI()
         }) { errorStr in
             AlertHelper.showAlert(msg: errorStr)
         }
+    }
+    
+    private func updateUI() {
+        self.tableView.reloadData()
+        self.lbTitle.text = viewModel.newsInfo?.title
+        self.lbSubtitle.text = viewModel.newsInfo?.subtitle
     }
 }
 

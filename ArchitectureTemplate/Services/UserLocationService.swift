@@ -81,7 +81,7 @@ extension UserLocationService: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        AlertHelper.showAlert(msg: error.localizedDescription)
+        //AlertHelper.showAlert(msg: error.localizedDescription)
     }
 }
 

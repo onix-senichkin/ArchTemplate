@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 protocol BaseRequestProtocol {
-
+    
     func mockDataName() -> String?
     func method() -> HTTPMethod
     func apiPath() -> String?
@@ -26,7 +26,7 @@ protocol CustomMap {
 }
 
 class BaseRequest: BaseRequestProtocol {
-
+    
     func mockDataName() -> String? {
         return nil
     }
@@ -34,7 +34,7 @@ class BaseRequest: BaseRequestProtocol {
     func method() -> HTTPMethod {
         return .post
     }
-
+    
     func apiPath() ->String? {
         return nil
     }
@@ -50,13 +50,26 @@ class BaseRequest: BaseRequestProtocol {
     func rawData() -> Data? {
         return nil
     }
-
+    
     func encoding() -> ParameterEncoding {
         return URLEncoding.default
     }
-
+    
     func performRequest<T:Decodable>(to classType: T.Type, completion: @escaping RequestClosure<T>) {
         RequestManager.shared.performRequest(self, to: classType, completion: completion)
+    }
+    
+    func performRequestAsync<T:Decodable>(to classType: T.Type) async -> RequestResultCodable<T> {
+        let result = await performRequestAsyncInternal(to: classType)
+        return result
+    }
+    
+    @MainActor private func performRequestAsyncInternal<T:Decodable>(to classType: T.Type) async -> RequestResultCodable<T> {
+        return await withCheckedContinuation({ continuation in
+            RequestManager.shared.performRequest(self, to: classType) { result in
+                continuation.resume(returning: result)
+            }
+        })
     }
 }
 

@@ -11,6 +11,9 @@ import UIKit
 
 protocol NewsListViewModelType {
     
+    //getters
+    var newsInfo: NewsInfoModel? { get }
+    
     //datasource
     func getNumberOfRows() -> Int
     func getRowIndex(from objId: Int) -> Int
@@ -27,6 +30,7 @@ class NewsListViewModel: NewsListViewModelType {
     private var readingListService: ReadingListServiceType
     
     private var items: [NewViewModel] = []
+    private var curNewsInfo: NewsInfoModel?
     
     init(_ coordinator: NewsListCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
@@ -37,7 +41,10 @@ class NewsListViewModel: NewsListViewModelType {
         print("NewsListViewModel - deinit")
     }
     
-    //datasource
+    //getters
+    var newsInfo: NewsInfoModel? {
+        return curNewsInfo
+    }
     
     //actions
     func getNews(sBlock: @escaping EmptyClosureType, eBlock: @escaping SimpleClosure<String?>) {
@@ -56,6 +63,39 @@ class NewsListViewModel: NewsListViewModelType {
             sBlock()
         }) { errorStr in
             eBlock(errorStr)
+        }
+    }
+    
+    //TODO - research how to return to main thread
+    func getNewsAsync(sBlock: @escaping EmptyClosureType, eBlock: @escaping SimpleClosure<String?>) {
+        Task {
+            async let result1 = GetNewsRequest().performRequestAsync(to: [NewModel].self)
+            async let result2 = GetNewsInfoRequest().performRequestAsync(to: NewsInfoModel.self)
+            
+            let results = await (result1, result2)
+            
+            switch results.0 {
+            case .success(let response):
+                let models = response.map( { NewViewModel(new: $0) } )
+                self.items = models
+            case .error(let message):
+                eBlock(message)
+                return
+            }
+            print("getNews result1 \(results.0)")
+
+            switch results.1 {
+            case .success(let response):
+                self.curNewsInfo = response
+            case .error(let message):
+                eBlock(message)
+                return
+            }
+            print("getNews result2 \(results.1)")
+            
+            await MainActor.run {
+                sBlock()
+            }
         }
     }
     
