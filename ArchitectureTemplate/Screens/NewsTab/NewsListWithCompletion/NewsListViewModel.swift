@@ -28,9 +28,9 @@ class NewsListViewModel: NewsListViewModelType {
     
     fileprivate let coordinator: NewsListCoordinatorType
     private var readingListService: ReadingListServiceType
+    private var curNewsInfo: NewsInfoModel?
     
     private var items: [NewViewModel] = []
-    private var curNewsInfo: NewsInfoModel?
     
     init(_ coordinator: NewsListCoordinatorType, serviceHolder: ServiceHolder) {
         self.coordinator = coordinator
@@ -69,33 +69,42 @@ class NewsListViewModel: NewsListViewModelType {
     //TODO - research how to return to main thread
     func getNewsAsync(sBlock: @escaping EmptyClosureType, eBlock: @escaping SimpleClosure<String?>) {
         Task {
-            async let result1 = GetNewsRequest().performRequestAsync(to: [NewModel].self)
-            async let result2 = GetNewsInfoRequest().performRequestAsync(to: NewsInfoModel.self)
-            
-            let results = await (result1, result2)
-            
-            switch results.0 {
-            case .success(let response):
-                let models = response.map( { NewViewModel(new: $0) } )
-                self.items = models
-            case .error(let message):
-                eBlock(message)
-                return
-            }
-            print("getNews result1 \(results.0)")
+            async let result1 = getNews()
+            async let result2 = getNewsInfo()
+            let resultError = await [result1, result2].compactMap( { $0 }).joined(separator: "\n")
 
-            switch results.1 {
-            case .success(let response):
-                self.curNewsInfo = response
-            case .error(let message):
-                eBlock(message)
-                return
-            }
-            print("getNews result2 \(results.1)")
-            
             await MainActor.run {
-                sBlock()
+                if resultError.isEmpty {
+                    sBlock()
+                } else {
+                    eBlock(resultError)
+                }
             }
+        }
+    }
+    
+    func getNews() async -> String? {
+        let result = await GetNewsRequest().performRequestAsync(to: [NewModel].self)
+        switch result {
+        case .success(let response):
+            let models = response.map( { NewViewModel(new: $0) } )
+            self.items = models
+            print("getNews result1 \(models)")
+            return nil
+        case .error(let message):
+            return message
+        }
+    }
+    
+    func getNewsInfo() async -> String? {
+        let result = await GetNewsInfoRequest().performRequestAsync(to: NewsInfoModel.self)
+        switch result {
+        case .success(let response):
+            self.curNewsInfo = response
+            print("getNews result2 \(response)")
+            return nil
+        case .error(let message):
+            return message
         }
     }
     
